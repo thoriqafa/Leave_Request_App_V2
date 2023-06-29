@@ -11,6 +11,7 @@
 - [Use Case](https://drive.google.com/file/d/13ncpCd2m-KqCeqOpfQ4dzMhGBlW8hbet/view?usp=sharing) 
 - [ERD](https://drive.google.com/file/d/1EhfinXKSOV_LqwsEaV-a1mKrGZyb1rsI/view?usp=sharing)
 - [Dummy](https://docs.google.com/spreadsheets/d/1rRnBC3ivwvBq_UDVmlGPUkv672ncrPyBg3T30WFV7x4/edit?usp=sharing)
+- [Postman](https://documenter.getpostman.com/view/23371379/2s93zB4M1n)
 
 ## **`Priority`**
 - Set Dummy in DB
