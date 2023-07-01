@@ -18,4 +18,14 @@ public class LeaveController {
     public String history(Model model){
         return "leave/leave-history";
     }
+
+    @GetMapping("/approval")
+    public String approval(Model model){
+        return "leave/leave-approval";
+    }
+
+    @GetMapping("/balance")
+    public String balance(Model model){
+        return "leave/leave-balance";
+    }
 }

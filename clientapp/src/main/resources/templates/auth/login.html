@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <div th:replace="components/meta"></div>
+    <th:block th:replace="components/assets/plugins :: meta-login"></th:block>
     <title>Login</title>
+    <th:block th:replace="components/assets/plugins :: css-login"></th:block>
 </head>
-
 <body>
     <div class="wrapper">
         <div class="logo">
@@ -36,9 +35,6 @@
             </p>
         </div>
     </div>
-
-    <div th:replace="components/plugin"></div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <th:block th:include="components/assets/plugins :: js-login"></th:block>
 </body>
-
 </html>

@@ -13,12 +13,12 @@ public class LeaveTypeController {
     
     @GetMapping
     public String index(Model model){
-        return "leave-type/index";
+        return "leavetype/index";
     }
 
     @GetMapping("update")
     public String updateForm(Model model) {
-        return "leave-type/update-leave-type";
+        return "leavetype/update-leavetype";
     }
 
     @DeleteMapping("/{id}")
