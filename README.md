@@ -16,6 +16,7 @@
 ## **`Priority`**
 - Set Dummy in DB
 - Fix DB Relation
+- Layouting
 - Modul login
 - Modul CRUD user (Admin)
 
