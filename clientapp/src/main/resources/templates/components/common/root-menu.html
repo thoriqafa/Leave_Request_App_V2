@@ -1,0 +1,25 @@
+<!-- ROOT MENU FRAGMENT START -->
+<div th:fragment="root-menu">
+<div class="col-md-3 left_col">
+    <div class="left_col scroll-view">
+        <div class="navbar nav_title" style="border: 0;">
+            <a th:href="@{/dashboard}" class="site_title"><img th:src="@{/img/response.png}" width="40px" alt=""> <span style="font-size: large; font-weight: bold;">Leave Request <sup>App</sup></span></a>
+        </div>
+        <div class="clearfix"></div>
+        
+        <!-- menu profile quick info -->
+        <section th:include="components/common/menu-profile"></section>
+        <!-- /menu profile quick info -->
+
+        <br />
+        
+        <!-- sidebar menu -->
+        <section th:include="components/common/sidebar-menu"></section>
+        <!-- /sidebar menu -->
+
+        <!-- menu footer buttons -->
+        <section th:include="components/common/menu-footer"></section>
+        <!-- /menu footer buttons -->
+    </div>
+</div>
+<!-- ROOT MENU FRAGMENT END -->

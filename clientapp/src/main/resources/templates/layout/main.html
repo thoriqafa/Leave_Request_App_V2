@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <th:block th:replace="components/assets/plugins :: meta-tag"></th:block>
+    <th:block th:replace="components/assets/plugins :: css"></th:block>
+</head>
+<body>
+    <div layout:fragment="content"></div>
+    <th:block th:include="components/assets/plugins :: js"></th:block>
+</body>
+</html>
