@@ -1,6 +1,5 @@
 package id.co.mii.serverapp.services;
 
-import id.co.mii.serverapp.models.Department;
 import id.co.mii.serverapp.models.LeaveType;
 import id.co.mii.serverapp.repositories.LeaveTypeRepository;
 import java.util.List;

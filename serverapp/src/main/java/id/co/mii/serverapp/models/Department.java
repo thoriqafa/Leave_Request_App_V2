@@ -9,6 +9,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,10 +27,16 @@ import lombok.NoArgsConstructor;
 public class Department {
 
   @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
   @Column(length = 25, nullable = false)
   private String name;
+  
+  @OneToOne
+  @JoinColumn(name = "manager")
+  @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+  private Employee employee;  
 
   @OneToMany(mappedBy = "department")
   @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

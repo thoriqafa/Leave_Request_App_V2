@@ -1,9 +1,15 @@
 package id.co.mii.serverapp.models.dto.request;
 
+import id.co.mii.serverapp.models.Department;
+import id.co.mii.serverapp.models.Gender;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ *
+ * @author Fathur
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,6 +20,7 @@ public class UserRequest {
   private String name;
   private String email;
   private String phone;
-  private String gender;
+  private Gender gender;
+  private Department department;
 
 }

@@ -20,6 +20,27 @@
 - Modul login
 - Modul CRUD user (Admin)
 
+## **`Project Task`**
+**Jumat (30/06/2023)**
+- **Kevin Krisna Adji Pratama :**
+    - Layouting Modul Login Page (FE)
+    - Layouting Modul Home Page (FE)
+    - Layouting Modul Leave Page (FE)
+    - Layouting Modul Leave Type Page (FE)
+    - Layouting Modul User Page (FE)
+    - Layouting Modul Department Page (FE)
+    - Layouting Modul User Profile Page (FE)
+- **Thoriq Afa Faisal Muhammad :**
+    - Modul Employee (BE)
+    - Modul Leave Type (BE)
+    - Modul Department (BE)
+- **Achmad Fachturrohman :**
+    - Modul Login (BE) + Login Function (FE)
+    - Modul User (BE)
+    - Modul Leave Status (BE)
+    - Update Modul Department (BE)
+    - Update Modul Employee (BE)
+
 ## **`Ketentuan Repository`**
 
 - ❌ Dilarang mengakses atau menyalahgunakan repositori kelompok lain.

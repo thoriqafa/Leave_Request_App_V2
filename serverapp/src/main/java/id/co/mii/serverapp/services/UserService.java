@@ -37,6 +37,8 @@ public class UserService {
 
   public User create(UserRequest userRequest) {
     Employee employee = modelMapper.map(userRequest, Employee.class);
+    employee.setDepartment(userRequest.getDepartment());
+    
     User user = modelMapper.map(userRequest, User.class);
 
     // set default role
@@ -58,6 +60,11 @@ public class UserService {
     getById(id);
     user.setId(id);
     user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+    if (user.getRole() != null) {
+      user.setRole(user.getRole());
+    }
+
     return userRepository.save(user);
   }
 

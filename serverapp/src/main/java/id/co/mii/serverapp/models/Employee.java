@@ -42,8 +42,9 @@ public class Employee {
   @Column(length = 13)
   private String phone;
 
-  @Column(length = 10, nullable = false)
-  private String gender;
+  @ManyToOne
+  @JoinColumn(name = "gender")
+  private Gender gender;
 
   @Column(length = 1)
   private Boolean is_married;
@@ -52,16 +53,21 @@ public class Employee {
   private LocalDateTime hire_date;
   
   @Column(length = 20)
-  private LocalDateTime address;
+  private String address;
 
   @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
   // @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) //menghindari looping infiniti
   @PrimaryKeyJoinColumn
   private User user;
-
+  
+  @ManyToOne
+  @JoinColumn(name = "department")
+  private Department department;
+  
   @ManyToOne
   @JoinColumn(name = "manager")
-  private Employee manager;
+  @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+  private Employee employee;
 
   @OneToMany(mappedBy = "employee")
   @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
@@ -75,7 +81,4 @@ public class Employee {
   @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
   private List<History> histories;
 
-  @ManyToOne
-  @JoinColumn(name = "department")
-  private Department department;
 }

@@ -13,17 +13,18 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                // .csrf().disable()
                 .authorizeRequests(requests -> requests
-                        .antMatchers("/css/**", "/js/**", "/img/**").permitAll()
+                        .antMatchers("/css/**", "/js/**", "/gentelella/**","/img/**").permitAll()
                         .antMatchers("/login").permitAll()
-                        // .anyRequest().authenticated()
-                        .anyRequest().permitAll()
+                        .anyRequest().authenticated()
+                        // .anyRequest().permitAll()
                 )
                 
                 .formLogin(login -> login
                     .loginPage("/login")
                     .loginProcessingUrl("/login")
-                    // .successForwardUrl("/dashboard")
+                    // .successForwardUrl("/home/index")
                     .failureForwardUrl("/login?error=true").permitAll()
                 )
                 
