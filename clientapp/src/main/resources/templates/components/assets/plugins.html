@@ -1,15 +1,4 @@
 <!-- LOGIN START -->
-<!-- META TAG LOGIN FRAGMENT START -->
-<th:block th:fragment="meta-login">
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <meta name="_csrf" th:content="${_csrf.token}" />
-    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
-</th:block>
-<!-- META TAG LOGIN FRAGMENT END -->
-
 <!-- CSS LOGIN FRAGMENT START -->
 <th:block th:fragment="css-login">
     <!-- Font Family Nunito -->
@@ -44,7 +33,6 @@
     <meta name="description" content="Leave Request App for Final Project MCC 78 2023">
     <meta name="author" content="anonimuslim">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <meta name="_csrf" th:content="${_csrf.token}" />
     <meta name="_csrf_header" th:content="${_csrf.headerName}" />
 </th:block>
@@ -87,7 +75,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script th:src="@{/gentelella/vendors/validator/multifield.js}"></script>
     <script th:src="@{/gentelella/vendors/validator/validator.js}"></script>
-
     <!-- jQuery -->
     <script th:src="@{/gentelella/vendors/jquery/dist/jquery.min.js}"></script>
     <!-- Bootstrap -->
@@ -148,9 +135,8 @@
     <script th:src="@{/gentelella/vendors/jszip/dist/jszip.min.js}"></script>
     <script th:src="@{/gentelella/vendors/pdfmake/build/pdfmake.min.js}"></script>
     <script th:src="@{/gentelella/vendors/pdfmake/build/vfs_fonts.js}"></script>
-
     <!-- Csrf Token -->
-    <script th:src="@{gentelella/build/js/addCsrf.js}"></script>
+    <script th:src="@{/gentelella/build/js/addCsrf.js}"></script>
 </th:block>
 <!-- JAVASCRIPT FRAGMENT END -->
 <!-- GENERAL END -->

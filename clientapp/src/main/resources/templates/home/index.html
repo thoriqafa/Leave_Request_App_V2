@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/main}">
-
 <head>
     <title>Dashboard | Leave Request App</title>
 </head>
-
 <body class="nav-md">
     <!-- CONTENT LAYOUT FRAGMENT START -->
     <div class="container body" layout:fragment="content">
         <div class="main_container">
             <!-- root menu -->
             <section th:include="components/common/root-menu"></section>
-            <!-- /root menu -->
+            <!-- /root menu -->            
 
             <!-- top navigation -->
             <section th:include="components/common/top-nav"></section>
@@ -28,5 +26,4 @@
     </div>
     <!-- CONTENT LAYOUT FRAGMENT END -->
 </body>
-
 </html>

@@ -2,11 +2,10 @@
 <div th:fragment="menu-profile">
     <div class="profile clearfix">
         <div class="profile_pic">
-            <img th:src="@{/gentelella/production/images/img.jpg}" alt="..." class="img-circle profile_img">
+            <img th:src="@{/gentelella/production/images/user.png}" alt="..." class="img-circle profile_img">
         </div>
         <div class="profile_info">
-            <span>Welcome,</span>
-            <h2>John Doe</h2>
+            <p>Welcome, <span sec:authentication="name" class="text-capitalize"></span>&nbsp;as&nbsp;<span th:text="${#strings.replace(#authentication.getAuthorities()[0].getAuthority(), 'ROLE_', '')}" class="text-capitalize"></span></p>
         </div>
     </div>
 </div>
