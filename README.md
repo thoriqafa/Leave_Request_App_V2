@@ -29,22 +29,27 @@
     - Layouting Modul Leave Type Page (FE)
     - Layouting Modul User Page (FE)
     - Layouting Modul Department Page (FE)
-    - Layouting Modul User Profile Page (FE)
-    - Display user's name and role in the menu-profile and top-nav (FE)
-    - Fixed padding bug after positioning the top-nav element (FE)
-    - Add View User Page (FE)
+    - Layouting Modul User Profile Page (FE)    
 - **Thoriq Afa Faisal Muhammad :**
     - Modul Employee (BE)
     - Modul Leave Type (BE)
-    - Modul Department (BE)
-    - Update modul leave request (BE)
-    - Update modul leave balance (BE)
+    - Modul Department (BE)   
 - **Achmad Fachturrohman :**
     - Modul Login (BE) + Login Function (FE)
     - Modul User (BE)
     - Modul Leave Status (BE)
     - Update Modul Department (BE)
-    - Update Modul Employee (BE)
+    - Update Modul Employee (BE)    
+
+**Senin - Selasa (03/07/2023 - 04/07/2023)**
+- **Kevin Krisna Adji Pratama:**
+    - Display user's name and role in the menu-profile and top-nav (FE)
+    - Fixed padding bug after positioning the top-nav element (FE)
+    - Add View User Page (FE)
+- **Thoriq Afa Faisal Muhammad :**
+    - Update modul leave request (BE)
+    - Update modul leave balance (BE)
+- **Achmad Fachturrohman:**
     - Update modul department to get manager (BE)
     - Add modul leave type (FE)
 
