@@ -135,8 +135,16 @@
     <script th:src="@{/gentelella/vendors/jszip/dist/jszip.min.js}"></script>
     <script th:src="@{/gentelella/vendors/pdfmake/build/pdfmake.min.js}"></script>
     <script th:src="@{/gentelella/vendors/pdfmake/build/vfs_fonts.js}"></script>
+    
     <!-- Csrf Token -->
-    <script th:src="@{/gentelella/build/js/addCsrf.js}"></script>
+    <script th:src="@{/js/addCsrf.js}"></script>
+
+    <!-- JS Local -->
+    <div layout:fragment="script"></div> 
+</th:block>
+
+<th:block th:fragment="js-department">
+    <script th:src="@{/js/department.js}"></script>
 </th:block>
 <!-- JAVASCRIPT FRAGMENT END -->
 <!-- GENERAL END -->

@@ -6,14 +6,16 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
-import javax.persistence.MapsId;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -33,10 +35,11 @@ public class Department {
   @Column(length = 25, nullable = false)
   private String name;
   
-  @OneToOne
+  @ManyToOne
   @JoinColumn(name = "manager")
-  @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-  private Employee employee;  
+  // @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+  // @JsonIgnore
+  private Employee employee;
 
   @OneToMany(mappedBy = "department")
   @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

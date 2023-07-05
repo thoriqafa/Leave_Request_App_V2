@@ -1,7 +1,5 @@
 package id.co.mii.serverapp.models;
 
-import java.time.LocalDateTime;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,10 +28,10 @@ public class LeaveBalance {
   private Long id;
 
   @Column(length = 20, nullable = false)
-  private LocalDateTime current_year;
+  private Integer current_year;
 
   @Column(length = 20, nullable = false)
-  private LocalDateTime last_year;
+  private Integer last_year;
 
   @OneToOne
   @MapsId

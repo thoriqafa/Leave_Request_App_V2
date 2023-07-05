@@ -1,6 +1,7 @@
 package id.co.mii.serverapp.services;
 
 import id.co.mii.serverapp.models.Employee;
+import id.co.mii.serverapp.models.LeaveBalance;
 import id.co.mii.serverapp.models.Role;
 import id.co.mii.serverapp.models.User;
 import id.co.mii.serverapp.models.dto.request.UserRequest;
@@ -42,8 +43,8 @@ public class UserService {
     User user = modelMapper.map(userRequest, User.class);
 
     // set default role
-    Role role = roleService.getById(2L);
-    user.setRole(role);
+    // Role role = roleService.getById(2L);
+    // user.setRole(role);
 
     user.setEmployee(employee);
     user.setPassword(passwordEncoder.encode(user.getPassword()));

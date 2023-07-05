@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/main}">
+
 <head>
 	<title>Departmenet | Leave Request App</title>
 </head>
+
 <body class="nav-md">
 	<!-- CONTENT LAYOUT FRAGMENT START -->
-	<div class="container body" layout:fragment="content">
+	<section class="container body" layout:fragment="content">
 		<div class="main_container">
 			<!-- root menu -->
 			<section th:include="components/common/root-menu"></section>
@@ -21,9 +23,16 @@
 
 			<!-- footer content -->
 			<section th:include="components/common/footer"></section>
-			<!-- /footer content -->
+			<!-- /footer content -->			
 		</div>
+	</section>	
+
+	<!-- <th:block th:include="components/assets/plugins :: js-department"></th:block> -->
+	<div layout:fragment="script">
+		<script th:src="@{/js/department.js}"></script>
 	</div>
+
 	<!-- CONTENT LAYOUT FRAGMENT END -->
 </body>
+
 </html>

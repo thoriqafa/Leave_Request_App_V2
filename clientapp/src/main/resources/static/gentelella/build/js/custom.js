@@ -2540,9 +2540,9 @@ function init_DataTables() {
         scroller: true
     });
 
-    $('#datatable-fixed-header').DataTable({
-        fixedHeader: true
-    });
+    // $('#datatable-fixed-header').DataTable({
+    //     fixedHeader: true
+    // });
 
     var $datatable = $('#datatable-checkbox');
 

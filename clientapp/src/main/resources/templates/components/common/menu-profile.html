@@ -5,7 +5,13 @@
             <img th:src="@{/gentelella/production/images/user.png}" alt="..." class="img-circle profile_img">
         </div>
         <div class="profile_info">
-            <p>Welcome, <span sec:authentication="name" class="text-capitalize"></span>&nbsp;as&nbsp;<span th:text="${#strings.replace(#authentication.getAuthorities()[0].getAuthority(), 'ROLE_', '')}" class="text-capitalize"></span></p>
+            <p>Welcome, <br/>
+                <span sec:authentication="name" class="text-capitalize">
+                </span> as an               
+                <span th:text="${#strings.replace(#authentication.getAuthorities()[0].getAuthority(), 'ROLE_', '')}"
+                    class="text-lowercase">
+                </span>
+            </p>
         </div>
     </div>
 </div>

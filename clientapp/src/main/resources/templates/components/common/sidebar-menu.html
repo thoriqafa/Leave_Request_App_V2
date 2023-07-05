@@ -3,8 +3,18 @@
     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
         <div class="menu_section">
             <ul class="nav side-menu">
-                <li><a th:href="@{/home}"><i class="fa fa-home"></i>&nbsp;Home</a></li>
-                <li><a><i class="fa fa-calendar-days"></i>&nbsp;Leave<span class="fa fa-chevron-down"></span></a>
+                <li>
+                    <a th:href="@{/home}">
+                        <i class="fa fa-home"></i>
+                        &nbsp;Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <i class="fa fa-calendar-days"></i>
+                        &nbsp;Leave
+                        <span class="fa fa-chevron-down"></span>
+                    </a>
                     <ul class="nav child_menu">
                         <li><a th:href="@{/leave}">Leave Form</a></li>
                         <li><a th:href="@{/leave/history}">Leave History</a></li>
@@ -12,23 +22,28 @@
                         <li><a th:href="@{/leave/balance}">Balance Status</a></li>
                     </ul>
                 </li>
-                <li><a><i class="fa fa-calendar-check"></i>&nbsp;Leave Type<span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                        <li><a th:href="@{/leave-type}">View Leave Type</a></li>
-                        <li><a th:href="@{/leave-type/update}">Update Leave Type</a></li>
-                    </ul>
+                <li>
+                    <a th:href="@{/leavetype}">
+                        <i class="fa fa-calendar-check"></i>
+                        &nbsp;Leave Type
+                    </a>                    
                 </li>
-                <li><a><i class="fa fa-user"></i>&nbsp;User<span class="fa fa-chevron-down"></span></a>
+                <li>
+                    <a>
+                        <i class="fa fa-user"></i>
+                        &nbsp;User Management
+                        <span class="fa fa-chevron-down"></span>
+                    </a>
                     <ul class="nav child_menu">
                         <li><a th:href="@{/user}">View User</a></li>
                         <li><a th:href="@{/user/update}">Update User</a></li>
                     </ul>
                 </li>
-                <li><a><i class="fa fa-city"></i>&nbsp;Department<span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                        <li><a th:href="@{/department}">View Department</a></li>
-                        <li><a th:href="@{/department/update}">Update Department</a></li>
-                    </ul>
+                <li>
+                    <a th:href="@{/department}">
+                        <i class="fa fa-city"></i>
+                        &nbsp;Department
+                    </a>                    
                 </li>
             </ul>
         </div>

@@ -7,12 +7,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import id.co.mii.clientapp.service.DepartmentService;
+import lombok.AllArgsConstructor;
+
 @Controller
-@RequestMapping("department")
+@RequestMapping("/department")
+@AllArgsConstructor
 public class DepartmentController {
     
+    private DepartmentService departmentService;
+
     @GetMapping
     public String index(Model model){
+        model.addAttribute("departements", departmentService.getAll());
         return "depart/index";
     }
 

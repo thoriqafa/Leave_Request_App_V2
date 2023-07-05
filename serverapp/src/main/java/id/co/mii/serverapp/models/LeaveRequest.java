@@ -33,24 +33,24 @@ public class LeaveRequest {
   @Column(length = 25, nullable = false)
   private LocalDateTime end_date;
 
-  @Column(nullable = false)
+  @Column
   private Integer total;
 
-  @Column(nullable = false)
+  @Column
   private Integer duration;
 
-  @Column(nullable = false)
+  @Column
   private String attachment;
 
   @Column(nullable = false)
   private String notes;
 
   @ManyToOne
-  @JoinColumn(name = "employee", nullable = false)
+  @JoinColumn(name = "employee")
   private Employee employee;
 
   @ManyToOne
-  @JoinColumn(name = "leave_type", nullable = false)
+  @JoinColumn(name = "leave_type")
   private LeaveType leaveType;
 
   @OneToMany(mappedBy = "leaveRequest")
@@ -58,6 +58,6 @@ public class LeaveRequest {
   private List<History> histories;
 
   @ManyToOne
-  @JoinColumn(name = "current_status", nullable = false)
+  @JoinColumn(name = "current_status")
   private LeaveStatus leaveStatus;
 }

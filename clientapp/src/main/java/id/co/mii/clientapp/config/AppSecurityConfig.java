@@ -24,7 +24,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin(login -> login
                     .loginPage("/login")
                     .loginProcessingUrl("/login")
-                    // .successForwardUrl("/home/index")
+                    .successForwardUrl("/home/")
                     .failureForwardUrl("/login?error=true").permitAll()
                 )
                 
