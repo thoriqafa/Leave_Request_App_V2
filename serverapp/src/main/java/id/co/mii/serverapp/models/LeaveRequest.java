@@ -27,14 +27,11 @@ public class LeaveRequest {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Column(length = 25, nullable = false)
+  @Column(nullable = false)
   private LocalDateTime start_date;
 
-  @Column(length = 25, nullable = false)
-  private LocalDateTime end_date;
-
   @Column
-  private Integer total;
+  private LocalDateTime end_date;
 
   @Column
   private Integer duration;

@@ -17,7 +17,6 @@ import org.springframework.web.server.ResponseStatusException;
 public class EmployeeService {
 
     private EmployeeRepository employeeRepository;
-    private UserRepository userRepository;
     private DepartmentService departmentService;
     private ModelMapper modelMapper;
 

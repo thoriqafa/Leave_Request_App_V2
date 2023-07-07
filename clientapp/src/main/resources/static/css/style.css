@@ -1,0 +1,28 @@
+input .input-custom:valid {
+  border-color: green;
+}
+
+input.form-control:valid + .valid-feedback {
+  display: block;
+}
+
+/* select.form-select:valid {
+  border-color: green;
+}
+
+select.form-select:valid + .valid-feedback {
+  display: block;
+} */
+
+/* input.form-control:invalid {
+  border-color: red;
+}
+
+input.form-control:invalid + .invalid-feedback {
+  display: block;
+} */
+
+#required-star {
+  color: red;
+  margin-left: 5px;
+}

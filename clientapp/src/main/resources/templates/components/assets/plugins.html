@@ -67,6 +67,8 @@
     <link th:href="@{/gentelella/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css}" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link th:href="@{/gentelella/build/css/custom.min.css}" rel="stylesheet">
+
+    <link th:href="@{/css/style.css}" rel="stylesheet">
 </th:block>
 <!-- CSS FRAGMENT END -->
 
@@ -118,7 +120,7 @@
     <!-- Custom Theme Scripts -->
     <script th:src="@{/gentelella/build/js/custom.min.js}"></script>
     <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/f39f34aa4b.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://kit.fontawesome.com/f39f34aa4b.js" crossorigin="anonymous"></script> -->
     <!-- Datatables -->
     <script th:src="@{/gentelella/vendors/datatables.net/js/jquery.dataTables.min.js}"></script>
     <script th:src="@{/gentelella/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js}"></script>
@@ -139,8 +141,13 @@
     <!-- Csrf Token -->
     <script th:src="@{/js/addCsrf.js}"></script>
 
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- JS Local -->
     <div layout:fragment="script"></div> 
+
+    <script th:src="@{/js/main.js}"></script>
 </th:block>
 
 <th:block th:fragment="js-department">

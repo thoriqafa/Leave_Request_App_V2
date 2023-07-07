@@ -16,11 +16,11 @@ public class Employee {
     private String email;
     private String phone;
     private Gender gender;
-    private Boolean isMarried;
-    private LocalDateTime hireDate;
+    private Boolean is_married;
+    private LocalDateTime hire_date;
     private String address;
     private User user;
-    private Department department;
-    private Employee employee;
+    // private Department department;
+    // private Employee employee;
 
 }

@@ -1,4 +1,4 @@
-package id.co.mii.serverapp.controllers;
+package id.co.mii.clientapp.controller.rest;
 
 import java.util.List;
 
@@ -10,34 +10,33 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import id.co.mii.serverapp.models.LeaveRequest;
-import id.co.mii.serverapp.models.dto.request.LeaveRequestApply;
-import id.co.mii.serverapp.services.LeaveRequestService;
+import id.co.mii.clientapp.model.LeaveRequest;
+import id.co.mii.clientapp.service.LeaveRequestService;
 import lombok.AllArgsConstructor;
 
 @RestController
-@AllArgsConstructor
-@RequestMapping("/leave/request")
-public class LeaveRequestController {
-    private LeaveRequestService leaveRequestService;
+@RequestMapping("/api/leaverequest")
+@AllArgsConstructor 
+public class RestLeaveRequestController {
+    public LeaveRequestService leaveRequestService;
 
     @GetMapping
     public List<LeaveRequest> getAll(){
         return leaveRequestService.getAll();
     }
-    
+
     @GetMapping("/{id}")
     public LeaveRequest getById(@PathVariable Long id){
         return leaveRequestService.getById(id);
     }
 
     @PostMapping
-    public LeaveRequest create(@RequestBody LeaveRequestApply leaveRequestApply){
-        return leaveRequestService.create(leaveRequestApply);
+    public LeaveRequest create(@RequestBody LeaveRequest leaveRequest){
+        return leaveRequestService.create(leaveRequest);
     }
 
     @PutMapping("/{id}")
-    public LeaveRequest approve(@PathVariable Long id, @RequestBody LeaveRequestApply leaveRequestApply){
-        return leaveRequestService.approve(id, leaveRequestApply);
+    public LeaveRequest update(@PathVariable Long id, @RequestBody LeaveRequest leaveRequest){
+        return leaveRequestService.update(id, leaveRequest);
     }
 }

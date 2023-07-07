@@ -25,7 +25,7 @@ public class History {
   private Long id;
 
   @Column
-  private String notes;
+  private String remarked;
 
   @Column(length = 25, nullable = false)
   private LocalDateTime date;
@@ -35,10 +35,10 @@ public class History {
   private LeaveRequest leaveRequest;
 
   @ManyToOne
-  @JoinColumn(name = "leave_status", nullable = false)
+  @JoinColumn(name = "leave_status")
   private LeaveStatus leaveStatus;
 
   @ManyToOne
-  @JoinColumn(name = "employee", nullable = false)
+  @JoinColumn(name = "employee")
   private Employee employee;
 }

@@ -30,7 +30,7 @@ public class LeaveType {
   @Column(nullable = false)
   private String name;
 
-  @Column(nullable = false)
+  @Column
   private Integer day_num;
 
   @OneToMany(mappedBy = "leaveType")

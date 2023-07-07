@@ -22,7 +22,7 @@
                                         <div class="text-right px-2">
                                             <button type="button" class="btn btn-success" data-toggle="modal"
                                                 data-target="#createLeavetype">
-                                                <i class="fa-solid fa-plus"></i>
+                                                <i class="fa fa-plus"></i>
                                             </button>
                                         </div>
                                         <table id="table-leavetype" class="table table-striped table-bordered"
@@ -85,7 +85,7 @@
 
     <!-- Modal Create-->
     <div class="modal fade" id="createLeavetype" data-backdrop="static" data-keyboard="false" tabindex="-1"
-        role="dialog" aria-labelledby="detailLeavetypeTitle" aria-hidden="true">
+        role="dialog" aria-labelledby="createLeavetypeTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -97,24 +97,65 @@
                     <div class="mb-3">
                         <label for="crt-leavetype-name" class="form-label text-dark">Leave Name</label>
                         <span id="required-star" class="required-field">*</span>
-                        <input type="text" class="form-control" id="crt-country-code" required>
+                        <input type="text" class="input-custom form-control" id="crt-leavetype-name" required>
                         <div class="valid-feedback">
                             Looks good!
                         </div>
 
                         <label for="crt-leavetype-daynum" class="form-label text-dark mt-3">Total Days</label>
-                        <span id="required-star" class="required-field">*</span>
-                        <input type="text" class="form-control" id="crt-country-name" required>
-                        <div class="valid-feedback">
+                        <!-- <span id="required-star" class="required-field">*</span> -->
+                        <input type="text" class="form-control" id="crt-leavetype-daynum">
+                        <!-- <div class="valid-feedback">
                             Looks good!
-                        </div>                        
+                        </div>                         -->
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">
                         Close
                     </button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">
+                    <button type="button" class="btn btn-primary" onclick="create()">
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Update-->
+    <div class="modal fade" id="updateLeavetype" data-backdrop="static" data-keyboard="false" tabindex="-1"
+        role="dialog" aria-labelledby="updateLeavetypeTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title font-weight-bold text-dark">
+                        Update Leave Type
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <input type="hidden" class="form-control" id="upd-leavetype-id">
+
+                        <label for="upd-leavetype-name" class="form-label text-dark">Leave Name</label>
+                        <span id="required-star" class="required-field">*</span>
+                        <input type="text" class="input-custom form-control" id="upd-leavetype-name" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+
+                        <label for="upd-leavetype-daynum" class="form-label text-dark mt-3">Total Days</label>
+                        <!-- <span id="required-star" class="required-field">*</span> -->
+                        <input type="text" class="form-control" id="upd-leavetype-daynum">
+                        <!-- <div class="valid-feedback">
+                            Looks good!
+                        </div>                         -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="button" class="btn btn-primary" onclick="update()">
                         Save
                     </button>
                 </div>

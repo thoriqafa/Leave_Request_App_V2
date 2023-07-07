@@ -6,6 +6,7 @@ import id.co.mii.serverapp.models.Role;
 import id.co.mii.serverapp.models.User;
 import id.co.mii.serverapp.models.dto.request.UserRequest;
 import id.co.mii.serverapp.repositories.UserRepository;
+import java.time.LocalDateTime;
 
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -43,12 +44,13 @@ public class UserService {
     User user = modelMapper.map(userRequest, User.class);
 
     // set default role
-    // Role role = roleService.getById(2L);
-    // user.setRole(role);
+     // Role role = roleService.getById(2L);
+     // user.setRole(role);
 
     user.setEmployee(employee);
     user.setPassword(passwordEncoder.encode(user.getPassword()));
     employee.setUser(user);
+    employee.setHire_date(LocalDateTime.now());
 
     return userRepository.save(user);
   }
