@@ -2,7 +2,6 @@ package id.co.mii.clientapp.controller.rest;
 
 import java.util.List;
 
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,41 +11,40 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import id.co.mii.clientapp.model.Role;
-import id.co.mii.clientapp.service.RoleService;
+import id.co.mii.clientapp.model.Employee;
+import id.co.mii.clientapp.service.EmployeeService;
 import lombok.AllArgsConstructor;
 
 @RestController
-@RequestMapping("/api/role")
-@PreAuthorize("hasRole('admin')")
+@RequestMapping("/api/employee")
 @AllArgsConstructor
-public class RestRoleController {
-
-    private RoleService roleService;
+public class RestEmployeeController {
+    
+    private EmployeeService employeeService;
 
     @GetMapping
-    public List<Role> getAll(){
-        return roleService.getAll();
+    public List<Employee> getAll(){
+        return employeeService.getAll();
     }
 
     @GetMapping("/{id}")
-    public Role getById(@PathVariable Long id){
-        return roleService.getById(id);
+    public Employee getById(@PathVariable Long id){
+        return employeeService.getById(id);
     }
 
     @PostMapping
-    public Role create(@RequestBody Role role){
-        return roleService.create(role);
+    public Employee create(@RequestBody Employee employee){
+        return employeeService.create(employee);
     }
 
     @PutMapping("/{id}")
-    public Role update(@PathVariable Long id, @RequestBody Role role){
-        return roleService.update(id, role);
+    public Employee update(@PathVariable Long id, @RequestBody Employee employee){
+        return employeeService.update(id, employee);
     }
 
     @DeleteMapping("/{id}")
-    public Role delete(@PathVariable Long id){
-        return roleService.delete(id);
+    public Employee delete(@PathVariable Long id){
+        return employeeService.delete(id);
     }
 
 }

@@ -17,16 +17,25 @@ public class LeaveHistoryService {
     @Autowired
     private RestTemplate restTemplate;
 
-
     @Value("${server.baseUrl}/leave/history")
     private String url;
 
-    public List<History> getAll(){
+    public List<History> getAll() {
         return restTemplate.exchange(
-            url,
-            HttpMethod.GET,
-            null,
-            new ParameterizedTypeReference<List<History>>() {
-            }).getBody();
+                url,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<History>>() {
+                }).getBody();
     }
+
+    public History getById(Long id) {
+        return restTemplate.exchange(
+                url + "/" + id,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<History>() {
+                }).getBody();
+    }
+    
 }

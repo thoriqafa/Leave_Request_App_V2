@@ -38,10 +38,11 @@ function create() {
             notes: notes
         }),
         success: (result) => {
+            $('#datatable-fixed-header').DataTable().ajax.reload()
             Swal.fire({
-                position: 'center',
+                position: 'top-end',
                 icon: 'success',
-                title: 'Leave has been created',
+                title: 'Your work has been saved',
                 showConfirmButton: false,
                 timer: 1500
             })

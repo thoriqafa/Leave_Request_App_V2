@@ -6,7 +6,7 @@
                 <div class="title_left">
                     <h3>
                         <small>
-                            List of Department
+                            List of Departments
                         </small>
                     </h3>
                 </div>
@@ -42,6 +42,82 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Detail -->
+    <div class="modal fade" id="detailDepartment" tabindex="-1" role="dialog" aria-labelledby="detailDepartmentTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title font-weight-bold text-dark">
+                        Department Detail
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    <table class="vitals-table text-dark" style="width: 100%;">
+                        <tbody>
+                            <tr>
+                                <th class="col-2">ID</th>
+                                <td id="department-id"></td>
+                            </tr>
+                            <tr>
+                                <th class="col-2">Name</th>
+                                <td id="department-name"></td>
+                            </tr>
+                            <tr>
+                                <th class="col-2">Manager</th>
+                                <td id="department-manager"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Update-->
+    <div class="modal fade" id="updateDepartment" data-backdrop="static" data-keyboard="false" tabindex="-1"
+        role="dialog" aria-labelledby="updateDepartmentTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title font-weight-bold text-dark">
+                        Update Department
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <input type="hidden" class="form-control" id="upd-department-id">
+
+                        <label for="upd-department-name" class="form-label text-dark">Leave Name</label>
+                        <span id="required-star" class="required-field">*</span>
+                        <input type="text" class="input-custom form-control" id="upd-department-name" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+
+                        <label for="upd-department-manager" class="form-label text-dark mt-3">Manager</label>
+                        <select name="Menager" class="form-control" id="upd-department-manager" required>
+                            <option selected disabled value="">- Choose Manager -</option>
+                        </select>                        
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="button" class="btn btn-primary" onclick="update()">
+                        Save
+                    </button>
                 </div>
             </div>
         </div>

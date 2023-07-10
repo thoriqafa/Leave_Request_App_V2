@@ -2,6 +2,7 @@ package id.co.mii.clientapp.controller.rest;
 
 import java.util.List;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,16 +28,19 @@ public class RestLeaveTypeConytoller {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasRole('admin')")
     public LeaveType getById(@PathVariable Long id){
         return leaveTypeService.getById(id);
     }
 
     @PostMapping
+    @PreAuthorize("hasRole('admin')")
     public LeaveType create(@RequestBody LeaveType leaveType){
         return leaveTypeService.create(leaveType);
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasRole('admin')")
     public LeaveType update(@PathVariable Long id, @RequestBody LeaveType leaveType){
         return leaveTypeService.update(id, leaveType);
     }

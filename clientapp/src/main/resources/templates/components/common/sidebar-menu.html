@@ -10,32 +10,33 @@
                     </a>
                 </li>
                 <li>
-                    <a>
+                    <a sec:authorize="hasAnyRole('manager','employee')">
                         <i class="fa fa-calendar"></i>
                         &nbsp;Leave
                         <span class="fa fa-chevron-down"></span>
                     </a>
                     <ul class="nav child_menu">
-                        <li><a th:href="@{/leave}">Leave Form</a></li>
-                        <li sec:authorize="hasAnyRole('MANAGER','EMPLOYEE')"><a th:href="@{/leave/history}">Leave History</a></li>
-                        <li sec:authorize="hasRole('MANAGER')"><a th:href="@{/leave/approval}">Leave Approval</a></li>
-                        <li sec:authorize="hasAnyRole('EMPLOYEE','ADMIN')"><a th:href="@{/leave/balance}">Balance Status</a></li>
+                        <li sec:authorize="hasAnyRole('manager','employee')"><a th:href="@{/leave}">Form</a></li>
+                        <li sec:authorize="hasAnyRole('manager','employee')"><a th:href="@{/leave/myrequest}">My Request</a></li>
+                        <li sec:authorize="hasAnyRole('manager','employee')"><a th:href="@{/leave/history}">History</a></li>
+                        <li sec:authorize="hasRole('manager')"><a th:href="@{/leave/approval}">Approval</a></li>
+                        <li sec:authorize="hasAnyRole('employee','manager')"><a th:href="@{/leave/balance}">Balance Status</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a th:href="@{/leavetype}" sec:authorize="hasRole('ADMIN')">
+                    <a th:href="@{/leavetype}" sec:authorize="hasRole('admin')">
                         <i class="fa fa-calendar-o"></i>
                         &nbsp;Leave Type
                     </a>                    
                 </li>
                 <li>
-                    <a th:href="@{/user}" sec:authorize="hasRole('ADMIN')">
+                    <a th:href="@{/user}" sec:authorize="hasRole('admin')">
                         <i class="fa fa-user"></i>
                         &nbsp;User Management
-                    </a>
+                    </a>                    
                 </li>
                 <li>
-                    <a th:href="@{/department}" sec:authorize="hasRole('ADMIN')">
+                    <a th:href="@{/department}" sec:authorize="hasRole('admin')">
                         <i class="fa fa-university"></i>
                         &nbsp;Department
                     </a>                    

@@ -31,14 +31,25 @@ public class LeaveRequestService {
     private UserRepository userRepository;
     private ModelMapper modelMapper;
 
-
     public List<LeaveRequest> getAll() {
-    return leaveRequestRepository.findAll();
+        return leaveRequestRepository.findAll();
     }
-    
-    public LeaveRequest getById(Long id){
+
+    public List<LeaveRequest> getAllRequest(Authentication authentication) {
+        User user = userRepository.findByUsername(authentication.getName());
+        Employee employee = user.getEmployee();
+        return leaveRequestRepository.findByEmployeeNot(employee);
+    }
+
+    public List<LeaveRequest> getAllMyRequest(Authentication authentication) {
+        User user = userRepository.findByUsername(authentication.getName());
+        Employee employee = user.getEmployee();
+        return leaveRequestRepository.findByEmployee(employee);
+    }
+
+    public LeaveRequest getById(Long id) {
         return leaveRequestRepository
-        .findById(id)
+                .findById(id)
                 .orElseThrow(()
                         -> new ResponseStatusException(
                         HttpStatus.NOT_FOUND,
@@ -47,7 +58,7 @@ public class LeaveRequestService {
                 );
     }
 
-    public LeaveRequest create(LeaveRequestApply leaveRequestApply){
+    public LeaveRequest create(LeaveRequestApply leaveRequestApply) {
         LeaveRequest leaveRequest = modelMapper.map(leaveRequestApply, LeaveRequest.class);
         History history = modelMapper.map(leaveRequestApply, History.class);
 
@@ -70,19 +81,19 @@ public class LeaveRequestService {
         history.setDate(LocalDateTime.now());
         history.setLeaveStatus(leaveStatus);
         historyRepository.save(history);
-        
+
         return leaveRequest;
     }
 
-    public LeaveRequest approve(Long id, LeaveRequestApply leaveRequestApply){
+    public LeaveRequest approve(Long id, LeaveRequestApply leaveRequestApply) {
         LeaveRequest leaveRequest = modelMapper.map(leaveRequestApply, LeaveRequest.class);
         History history = modelMapper.map(leaveRequestApply, History.class);
-        
+
         getById(id);
         leaveRequest.setId(id);
-        
-//        LeaveStatus leaveStatus = leaveStatusService.getById(2L);
-//        leaveRequest.setLeaveStatus(leaveStatus);
+
+        LeaveStatus leaveStatus = leaveStatusService.getById(2L);
+        leaveRequest.setLeaveStatus(leaveStatus);
 
         leaveRequest.setEmployee(leaveRequest.getEmployee());
 
@@ -99,9 +110,73 @@ public class LeaveRequestService {
         history.setRemarked(leaveRequestApply.getRemarked());
         history.setEmployee(employee);
         history.setDate(LocalDateTime.now());
+        history.setLeaveStatus(leaveStatus);
         historyRepository.save(history);
 
         return leaveRequest;
     }
+
+    public LeaveRequest reject(Long id, LeaveRequestApply leaveRequestApply) {
+        LeaveRequest leaveRequest = modelMapper.map(leaveRequestApply, LeaveRequest.class);
+        History history = modelMapper.map(leaveRequestApply, History.class);
+
+        getById(id);
+        leaveRequest.setId(id);
+
+        LeaveStatus leaveStatus = leaveStatusService.getById(3L);
+        leaveRequest.setLeaveStatus(leaveStatus);
+
+        leaveRequest.setEmployee(leaveRequest.getEmployee());
+
+        leaveRequest = leaveRequestRepository.save(leaveRequest);
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+
+        User user = userRepository.findByUsername(username);
+
+        Employee employee = user.getEmployee();
+
+        history.setLeaveRequest(leaveRequest);
+        history.setRemarked(leaveRequestApply.getRemarked());
+        history.setEmployee(employee);
+        history.setDate(LocalDateTime.now());
+        history.setLeaveStatus(leaveStatus);
+        historyRepository.save(history);
+
+        return leaveRequest;
+    }
+    
+    public LeaveRequest cancelRequest(Long id, LeaveRequestApply leaveRequestApply) {
+        LeaveRequest leaveRequest = modelMapper.map(leaveRequestApply, LeaveRequest.class);
+        History history = modelMapper.map(leaveRequestApply, History.class);
+
+        getById(id);
+        leaveRequest.setId(id);
+
+        LeaveStatus leaveStatus = leaveStatusService.getById(4L);
+        leaveRequest.setLeaveStatus(leaveStatus);
+
+        leaveRequest.setEmployee(leaveRequest.getEmployee());
+
+        leaveRequest = leaveRequestRepository.save(leaveRequest);
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+
+        User user = userRepository.findByUsername(username);
+
+        Employee employee = user.getEmployee();
+
+        history.setLeaveRequest(leaveRequest);
+        history.setRemarked(leaveRequestApply.getRemarked());
+        history.setEmployee(employee);
+        history.setDate(LocalDateTime.now());
+        history.setLeaveStatus(leaveStatus);
+        historyRepository.save(history);
+
+        return leaveRequest;
+    }
+
 
 }

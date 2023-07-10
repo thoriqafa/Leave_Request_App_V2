@@ -1,7 +1,7 @@
 $(document).ready(function(){
     $('#datatable-fixed-header').DataTable({
         ajax:{
-            url: '/api/user',
+            url: '/api/employee',
             dataSrc: ''            
         },
         columns:[
@@ -12,13 +12,47 @@ $(document).ready(function(){
                 }
             },
             {
-                data: 'username',
-                render: function(data){
-                    return `<span class="text-capitalize">${data}</span>`
+                data: 'name',
+                // render: function(data){
+                //     return `<span class="text-capitalize">${data}</span>`
+                // }
+            },
+            {
+                data: 'email',
+            },
+            {
+                data: 'phone',
+            },
+            {
+                data: 'gender.name',
+            },
+            {
+                data: 'is_married',
+                render: function(data, type, row) {
+                    if (type === 'display' && data !== null) {
+                      if (data === true) {
+                        return 'Married';
+                      } else if (data === false) {
+                        return 'Single';
+                      }
+                    }
+                    return data;
+                  }
+            },
+            {
+                data: 'hire_date',
+                render: function(data, type, row) {
+                    if (type === 'display' && data !== null) {
+                      return moment(data).format('DD MMMM YYYY');
+                    }
+                    return data;
                 }
             },
             {
-                data: 'role.name'
+                data: 'address',
+            },
+            {
+                data: 'user.role.name'
             },
             {
                 data: 'null',
@@ -34,7 +68,7 @@ $(document).ready(function(){
                 }
             }
         ]
-    });
+    });    
 
     $.ajax({
         url: "/api/role",
@@ -44,6 +78,18 @@ $(document).ready(function(){
             var roleDrop = $("#crt-user-role");
             $.each(data, function(index, role) {
                 roleDrop.append("<option value='" + role.id + "'>" + role.name + "</option>");
+            });
+        }
+    });
+    
+    $.ajax({
+        url: "/api/department",
+        type: "GET",
+        success: function(data) {
+            // Memperbarui elemen dropdown Region
+            var departmentDrop = $("#crt-user-department");
+            $.each(data, function(index, department) {
+                departmentDrop.append("<option value='" + department.id + "'>" + department.name + "</option>");
             });
         }
     });

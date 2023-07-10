@@ -20,7 +20,7 @@ public class AppUserDetail implements UserDetails {
         List<GrantedAuthority> authorities = new ArrayList<>();
         
         Role role = user.getRole();
-        authorities.add(new SimpleGrantedAuthority("ROLE_" + role.getName().toUpperCase()));
+        authorities.add(new SimpleGrantedAuthority("ROLE_" + role.getName().toLowerCase()));
 
         List<Privilege> privileges = role.getPrivileges();
         for (Privilege privilege : privileges) {

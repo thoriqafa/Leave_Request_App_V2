@@ -21,7 +21,7 @@
 - Modul CRUD user (Admin)
 
 ## **`Project Task`**
-**Jumat (30/06/2023)**
+**Senin (10/07/2023)**
 - **Kevin Krisna Adji Pratama :**
     - Layouting Modul Login Page (FE)
     - Layouting Modul Home Page (FE)

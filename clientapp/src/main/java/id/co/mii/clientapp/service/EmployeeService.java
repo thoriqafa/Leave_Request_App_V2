@@ -10,59 +10,59 @@ import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import id.co.mii.clientapp.model.Department;
+import id.co.mii.clientapp.model.Employee;
 
 @Service
-public class DepartmentService {
+public class EmployeeService {
 
     @Autowired
     private RestTemplate restTemplate;
 
-    @Value("${server.baseUrl}/department")
+    @Value("${server.baseUrl}/employee")
     private String url;
 
-    public List<Department> getAll() {
+    public List<Employee> getAll() {
         return restTemplate.exchange(
                 url,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<List<Department>>() {
+                new ParameterizedTypeReference<List<Employee>>() {
                 }).getBody();
     }
 
-    public Department getById(Long id) {
+    public Employee getById(Long id) {
         return restTemplate.exchange(
                 url + "/" + id,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<Department>() {
+                new ParameterizedTypeReference<Employee>() {
                 }).getBody();
     }
 
-    public Department create(Department department) {
+    public Employee create(Employee employee) {
         return restTemplate.exchange(
                 url,
                 HttpMethod.POST,
-                new HttpEntity(department),
-                new ParameterizedTypeReference<Department>() {
+                new HttpEntity(employee),
+                new ParameterizedTypeReference<Employee>() {
                 }).getBody();
     }
 
-    public Department update(Long id, Department department) {
+    public Employee update(Long id, Employee employee) {
         return restTemplate.exchange(
                 url + "/" + id,
                 HttpMethod.PUT,
-                new HttpEntity(department),
-                new ParameterizedTypeReference<Department>() {
+                new HttpEntity(employee),
+                new ParameterizedTypeReference<Employee>() {
                 }).getBody();
     }
 
-    public Department delete(Long id) {
+    public Employee delete(Long id) {
         return restTemplate.exchange(
                 url + "/" + id,
                 HttpMethod.DELETE,
                 null,
-                new ParameterizedTypeReference<Department>() {
+                new ParameterizedTypeReference<Employee>() {
                 }).getBody();
     }
 

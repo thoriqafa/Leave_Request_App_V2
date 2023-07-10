@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import id.co.mii.clientapp.model.LeaveRequest;
-import id.co.mii.clientapp.model.LeaveType;
 
 @Service
 public class LeaveRequestService {
@@ -25,6 +24,24 @@ public class LeaveRequestService {
     public List<LeaveRequest> getAll(){
         return restTemplate.exchange(
             url,
+            HttpMethod.GET,
+            null,
+            new ParameterizedTypeReference<List<LeaveRequest>>() {
+            }).getBody();
+    }
+    
+    public List<LeaveRequest> getAllRequest(){
+        return restTemplate.exchange(
+            url + "/requests",
+            HttpMethod.GET,
+            null,
+            new ParameterizedTypeReference<List<LeaveRequest>>() {
+            }).getBody();
+    }
+    
+    public List<LeaveRequest> getAllMyRequest(){
+        return restTemplate.exchange(
+            url + "/my",
             HttpMethod.GET,
             null,
             new ParameterizedTypeReference<List<LeaveRequest>>() {
@@ -57,4 +74,32 @@ public class LeaveRequestService {
                 new ParameterizedTypeReference<LeaveRequest>() {
                 }).getBody();
     }
+
+    public LeaveRequest approved(Long id, LeaveRequest leaveRequest) {
+        return restTemplate.exchange(
+                url + "/approve/" + id,
+                HttpMethod.PUT,
+                new HttpEntity(leaveRequest),
+                new ParameterizedTypeReference<LeaveRequest>() {
+                }).getBody();
+    }
+    
+    public LeaveRequest rejected(Long id, LeaveRequest leaveRequest) {
+        return restTemplate.exchange(
+                url + "/reject/" + id,
+                HttpMethod.PUT,
+                new HttpEntity(leaveRequest),
+                new ParameterizedTypeReference<LeaveRequest>() {
+                }).getBody();
+    }
+    
+    public LeaveRequest cancelRequest(Long id, LeaveRequest leaveRequest) {
+        return restTemplate.exchange(
+                url + "/cancel/" + id,
+                HttpMethod.PUT,
+                new HttpEntity(leaveRequest),
+                new ParameterizedTypeReference<LeaveRequest>() {
+                }).getBody();
+    }
+    
 }

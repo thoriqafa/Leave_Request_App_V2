@@ -24,6 +24,16 @@ public class RestLeaveRequestController {
     public List<LeaveRequest> getAll(){
         return leaveRequestService.getAll();
     }
+    
+    @GetMapping("requests")
+    public List<LeaveRequest> getAllRequest(){
+        return leaveRequestService.getAllRequest();
+    }
+    
+    @GetMapping("my")
+    public List<LeaveRequest> getAllMyRequest(){
+        return leaveRequestService.getAllMyRequest();
+    }
 
     @GetMapping("/{id}")
     public LeaveRequest getById(@PathVariable Long id){
@@ -38,5 +48,20 @@ public class RestLeaveRequestController {
     @PutMapping("/{id}")
     public LeaveRequest update(@PathVariable Long id, @RequestBody LeaveRequest leaveRequest){
         return leaveRequestService.update(id, leaveRequest);
+    }
+
+    @PutMapping("/approved/{id}")
+    public LeaveRequest approved(@PathVariable Long id, @RequestBody LeaveRequest leaveRequest){
+        return leaveRequestService.approved(id, leaveRequest);
+    }
+
+    @PutMapping("/rejected/{id}")
+    public LeaveRequest rejected(@PathVariable Long id, @RequestBody LeaveRequest leaveRequest){
+        return leaveRequestService.rejected(id, leaveRequest);
+    }
+    
+    @PutMapping("/cancel/{id}")
+    public LeaveRequest cancelRequest(@PathVariable Long id, @RequestBody LeaveRequest leaveRequest){
+        return leaveRequestService.cancelRequest(id, leaveRequest);
     }
 }

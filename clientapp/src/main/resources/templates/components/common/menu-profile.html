@@ -5,11 +5,17 @@
             <img th:src="@{/gentelella/production/images/user.png}" alt="..." class="img-circle profile_img">
         </div>
         <div class="profile_info">
-            <p>Welcome, <br/>
+            <p>Welcome,
                 <span sec:authentication="name" class="text-capitalize">
-                </span> as an               
+                </span>
+                <br />
+                <!-- <span th:text="${#strings.replace(#authentication.getAuthorities()[0].getAuthority(), 'ROLE_', '')}"
+                    class="text-capitalize text-dark badge badge-light py-0">
+                </span> -->
                 <span th:text="${#strings.replace(#authentication.getAuthorities()[0].getAuthority(), 'ROLE_', '')}"
-                    class="text-lowercase">
+                    th:class="${#strings.replace(#authentication.getAuthorities()[0].getAuthority(), 'ROLE_', '') eq 'admin'} ? 'text-capitalize text-dark badge badge-light py-0' :
+                (${#strings.replace(#authentication.getAuthorities()[0].getAuthority(), 'ROLE_', '') eq 'employee'} ? 'text-capitalize text-light badge badge-primary py-0' :
+                (${#strings.replace(#authentication.getAuthorities()[0].getAuthority(), 'ROLE_', '') eq 'manager'} ? 'text-capitalize text-light badge badge-success py-0' : ''))">
                 </span>
             </p>
         </div>

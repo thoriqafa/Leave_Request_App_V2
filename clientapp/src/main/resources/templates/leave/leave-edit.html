@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/main}">
 <head>
-	<title>User Admin</title>
+	<title>My Request | Leave Request App</title>
 </head>
 <body class="nav-md">
 	<!-- CONTENT LAYOUT FRAGMENT START -->
@@ -16,7 +16,7 @@
 			<!-- /top navigation -->
 
 			<!-- page content -->
-			<section th:include="components/widgets/user-content"></section>
+			<section th:include="components/widgets/leave-content-edit"></section>
 			<!-- /page content -->
 
 			<!-- footer content -->
@@ -24,9 +24,10 @@
 			<!-- /footer content -->
 		</div>
 	</div>
-	<!-- CONTENT LAYOUT FRAGMENT END -->
+
 	<div layout:fragment="script">
-		<script th:src="@{/js/user.js}"></script>
+		<script th:src="@{/js/leavecancel.js}"></script>
 	</div>
+	<!-- CONTENT LAYOUT FRAGMENT END -->
 </body>
 </html>
