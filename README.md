@@ -19,9 +19,10 @@
 - Layouting
 - Modul login
 - Modul CRUD user (Admin)
+- Approve & Reject
+- Email Notification
 
 ## **`Project Task`**
-**Senin (10/07/2023)**
 - **Kevin Krisna Adji Pratama :**
     - Layouting Modul Login Page (FE)
     - Layouting Modul Home Page (FE)
@@ -36,8 +37,8 @@
     - Add Create User Form (FE)
     - Add Approval (FE)
     - Add History (FE)
-    - Add email feature to backend (BE)
-    - Update endpoint email at backend (BE)
+    - Create Email Notificaion Feature for Approve & Reject (BE)
+    - Create Email Template Notification using Thymleaf for Approve & Reject (BE)
 
 - **Thoriq Afa Faisal Muhammad :**
     - Modul Employee (BE)

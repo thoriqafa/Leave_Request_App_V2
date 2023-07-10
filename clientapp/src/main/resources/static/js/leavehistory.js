@@ -34,7 +34,7 @@ $(document).ready(function(){
                 defaultContent:''
             },
             {
-                data: 'leaveStatus.name',
+                data: 'leaveRequest.leaveStatus.name',
                 defaultContent:'',
                 render: function (data, type, row, meta) {
                     let badgeClass = '';

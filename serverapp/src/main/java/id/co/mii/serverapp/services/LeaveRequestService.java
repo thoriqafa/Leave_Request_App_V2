@@ -14,7 +14,9 @@ import id.co.mii.serverapp.models.Employee;
 import id.co.mii.serverapp.models.History;
 import id.co.mii.serverapp.models.LeaveRequest;
 import id.co.mii.serverapp.models.LeaveStatus;
+import id.co.mii.serverapp.models.LeaveType;
 import id.co.mii.serverapp.models.User;
+import id.co.mii.serverapp.models.dto.request.EmailRequest;
 import id.co.mii.serverapp.models.dto.request.LeaveRequestApply;
 import id.co.mii.serverapp.repositories.HistoryRepository;
 import id.co.mii.serverapp.repositories.LeaveRequestRepository;
@@ -30,6 +32,7 @@ public class LeaveRequestService {
     private LeaveStatusService leaveStatusService;
     private UserRepository userRepository;
     private ModelMapper modelMapper;
+    private EmailService emailService;
 
     public List<LeaveRequest> getAll() {
         return leaveRequestRepository.findAll();
@@ -113,6 +116,8 @@ public class LeaveRequestService {
         history.setLeaveStatus(leaveStatus);
         historyRepository.save(history);
 
+        sendLeaveRequestStatusEmail(leaveRequest, leaveRequestApply.getRemarked());
+
         return leaveRequest;
     }
 
@@ -143,6 +148,8 @@ public class LeaveRequestService {
         history.setDate(LocalDateTime.now());
         history.setLeaveStatus(leaveStatus);
         historyRepository.save(history);
+
+        sendLeaveRequestStatusEmail(leaveRequest, leaveRequestApply.getRemarked());
 
         return leaveRequest;
     }
@@ -178,5 +185,23 @@ public class LeaveRequestService {
         return leaveRequest;
     }
 
+    private void sendLeaveRequestStatusEmail(LeaveRequest leaveRequest, String remarked) {
+        String to = leaveRequest.getEmployee().getEmail();
+        String subject = "Leave Request Status";
+        String name = leaveRequest.getEmployee().getName();
+        String status = leaveRequest.getLeaveStatus().getName();
+        Integer duration = leaveRequest.getDuration();
+        LocalDateTime start_date = leaveRequest.getStart_date();
+        LocalDateTime end_date = leaveRequest.getEnd_date();
+        String type = leaveRequest.getLeaveType().getName();
+        String notes = leaveRequest.getNotes();
 
+        // Menyisipkan data remarked hanya jika ada pada parameter
+        String remarks = (remarked != null) ? remarked : "No Remarks - Accepted"; // Simpan remarked dalam variabel remarks terpisah
+
+    
+        EmailRequest emailRequest = new EmailRequest(to, subject, name, status, duration, start_date, end_date, type, notes, remarks);
+    
+        emailService.sendHtmlMessage(emailRequest);
+    }
 }

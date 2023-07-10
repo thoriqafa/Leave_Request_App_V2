@@ -178,7 +178,7 @@ function rejected() {
 }
 
 function acceptRequest(id) {
-    let remarked = "Congratulations !";
+    let remarked;
 
     let requestId, startDate, endDate, notes, attachment, employeeId, leaveTypeId;
 
