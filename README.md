@@ -36,6 +36,8 @@
     - Add Create User Form (FE)
     - Add Approval (FE)
     - Add History (FE)
+    - Add email feature to backend (BE)
+    - Update endpoint email at backend (BE)
 
 - **Thoriq Afa Faisal Muhammad :**
     - Modul Employee (BE)
@@ -47,6 +49,10 @@
     - Add Create Request (FE)
     - Add Approval (FE)
     - Add History (FE)
+    - Update leave history pada leave request service (BE)
+    - Update getall data request untuk approval kecuali data request yang sedang login (service controller BE, service controller FE)
+    - Edit leave request untuk cancel dan diset untuk edit leave dari data mereka yang sedang login (service controller BE, service controller FE)
+    - Add edit leave request form untuk cancel (leave-content-edit.html dan leavecancel.js)
 
 - **Achmad Fachturrohman :**
     - Modul Login (BE) + Login Function (FE)
@@ -59,6 +65,11 @@
     - Add Create User Form (FE)
     - Add Approval (FE)
     - Add History (FE)
+    - Add leave reject and update leave approve service (BE) & Update view leave approval page (FE)
+    - Update AppUserDetail role (BE) & Update view user profile side bar (FE)
+    - Add history get by id (BE) & Update view leave history page (FE)
+    - Update view my request leave page (FE)
+    - Update view leave form & Update has role leavetype (FE)
 
 ## **`Ketentuan Repository`**
 
