@@ -3,7 +3,7 @@
 <head>
     <title>Dashboard | Leave Request App</title>
 </head>
-<body class="nav-md">
+<body class="footer_fixed nav-md">
     <!-- CONTENT LAYOUT FRAGMENT START -->
     <div class="container body" layout:fragment="content">
         <div class="main_container">
@@ -24,6 +24,10 @@
             <!-- /footer content -->
         </div>
     </div>
+
+    <div layout:fragment="script">
+		<script th:src="@{/js/dashboard.js}"></script>
+	</div>
     <!-- CONTENT LAYOUT FRAGMENT END -->
 </body>
 </html>

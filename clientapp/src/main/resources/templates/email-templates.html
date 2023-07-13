@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.4;
+            color: #000000;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background-color: #ba2034;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .content {
+            background-image: url("https://img.freepik.com/free-vector/red-business-border-modern-background-design-vector_53876-157563.jpg?w=740&t=st=1685333767~exp=1685334367~hmac=f504068d24f8e2847ba3e8c6ac9f09a4d2e34da52e13ba98b6ad77df1d5c8568");
+            padding: 40px;
+            text-align: center;
+        }
+
+        .footer {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <h2>Halo <span th:text="${name}"></span>,</h2>
+        <p>Anda telah diundang ke rapat dengan keterangan sebagai berikut :</p>
+        <p>Nama Rapat: <span th:text="${event}"></span></p>
+        <p>Tanggal: <span th:text="${date}"></span></p>
+        <p>Pukul: <span th:text="${start}"></span></p>
+        <p>
+            Lokasi: Gedung Metrodata, Ruangan
+            <span th:text="${room.name}"></span>
+        </p>
+        <p>Demikian pemberitahuan ini saya sampaikan.</p>
+        <p>Terima kasih.</p>
+
+        <hr />
+    </div>
+</body>
+
+</html>

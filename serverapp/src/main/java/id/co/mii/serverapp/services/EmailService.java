@@ -15,6 +15,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import id.co.mii.serverapp.models.dto.request.EmailRequest;
+import java.time.LocalDate;
 import lombok.AllArgsConstructor;
 
 @Service
@@ -44,13 +45,13 @@ public class EmailService {
             templateContent = templateContent.replace("{{STATUS}}", emailRequest.getStatus());
             templateContent = templateContent.replace("{{DURATION}}", String.valueOf(emailRequest.getDuration()));
 
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy 'at' HH:mm:ss");
-            LocalDateTime start_date = emailRequest.getStart_date();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy");
+            LocalDate start_date = emailRequest.getStart_date();
             String formattedStartDate = start_date.format(formatter);
             // templateContent = templateContent.replace("{{START_DATE}}", String.valueOf(emailRequest.getStart_date()));
             templateContent = templateContent.replace("{{START_DATE}}", formattedStartDate);
 
-            LocalDateTime end_date = emailRequest.getEnd_date();
+            LocalDate end_date = emailRequest.getEnd_date();
             String formattedEndDate = end_date.format(formatter);
             // templateContent = templateContent.replace("{{END_DATE}}", emailRequest.getEnd_date());
             // templateContent = templateContent.replace("{{END_DATE}}", String.valueOf(emailRequest.getEnd_date()));

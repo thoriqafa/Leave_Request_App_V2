@@ -1,6 +1,6 @@
 package id.co.mii.serverapp.models;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -16,7 +16,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
@@ -51,7 +50,7 @@ public class Employee {
   private Boolean is_married;
 
   @Column(length = 20)
-  private LocalDateTime hire_date;
+  private LocalDate hire_date;
   
   @Column(length = 20)
   private String address;
@@ -63,11 +62,16 @@ public class Employee {
   
   @ManyToOne
   @JoinColumn(name = "department")
+  @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
   private Department department;
+  
+  @OneToMany(mappedBy = "manager")
+  @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+  private List<Department> departments;
   
   @ManyToOne
   @JoinColumn(name = "manager")
-  @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+  // @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
   private Employee employee;
 
   @OneToMany(mappedBy = "employee")

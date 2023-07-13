@@ -12,6 +12,8 @@
 - [ERD](https://drive.google.com/file/d/1EhfinXKSOV_LqwsEaV-a1mKrGZyb1rsI/view?usp=sharing)
 - [Dummy](https://docs.google.com/spreadsheets/d/1rRnBC3ivwvBq_UDVmlGPUkv672ncrPyBg3T30WFV7x4/edit?usp=sharing)
 - [Postman](https://documenter.getpostman.com/view/23371379/2s93zB4M1n)
+- [FE Repository](https://github.com/anonimuslim/fe-final-project-mcc/)
+- [BE Repository](https://github.com/anonimuslim/be-final-project-mcc/)
 
 ## **`Priority`**
 - Set Dummy in DB
@@ -23,7 +25,7 @@
 - Email Notification
 
 ## **`Project Task`**
-- **Kevin Krisna Adji Pratama :**
+- **`Kevin Krisna Adji Pratama` :**
     - Layouting Modul Login Page (FE)
     - Layouting Modul Home Page (FE)
     - Layouting Modul Leave Page (FE)
@@ -39,8 +41,15 @@
     - Add History (FE)
     - Create Email Notificaion Feature for Approve & Reject (BE)
     - Create Email Template Notification using Thymleaf for Approve & Reject (BE)
+    - Fix email - Display actual duration data instead of null (BE)
+    - Remove value from 'remarked' variable for Email Notification in Backend (FE)
+    - Add visual feedback for processing approval/rejected leave request (FE)
+    - Enhance Duration Display in Form - Update to show duration in 'day' or 'days' (FE)
+    - Update MyRequest view to include history data (FE)
+    - Update and implement fixed footer (FE)
+    - Implement scrollable functionality in data table (FE)
 
-- **Thoriq Afa Faisal Muhammad :**
+- **`Thoriq Afa Faisal Muhammad` :**
     - Modul Employee (BE)
     - Modul Leave Type (BE)
     - Modul Department (BE)
@@ -54,8 +63,23 @@
     - Update getall data request untuk approval kecuali data request yang sedang login (service controller BE, service controller FE)
     - Edit leave request untuk cancel dan diset untuk edit leave dari data mereka yang sedang login (service controller BE, service controller FE)
     - Add edit leave request form untuk cancel (leave-content-edit.html dan leavecancel.js)
+    - Add history at leave request (BE)
+    - Update Service (BE)
+    - Update data type datetime to date (BE)
+    - Update department, employee, leaverequestapply to show manager on Employee Page (BE)
+    - Fix minor: Display Manager Data in Department View Table (BE)
+    - Refine Filter for Employee Approval Data Based on Logged-In Manager (BE)
+    - Add day_num for leave type (BE)
+    - Fix value of end_date & duration (BE)
+    - Update leave history (FE)
+    - Update data type datetime to date (FE)
+    - Update History on My Request Page + Minor (FE)
+    - Update leavecancel.js to show role on modal history & Update type 'date' to 'text' to fix 'error cannot parsing days' on leave-content.html (FE)
+    - Refine Filter for Employee Approval Data Based on Logged-In Manager (FE)
+    - Add day_num for duration in leave request (FE)
+    - Fix Balance, Duration, Approval, Data Filter Employee by Manager (FE)
 
-- **Achmad Fachturrohman :**
+- **`Achmad Fachturrohman` :**
     - Modul Login (BE) + Login Function (FE)
     - Modul User (BE)
     - Modul Leave Status (BE)
@@ -71,6 +95,19 @@
     - Add history get by id (BE) & Update view leave history page (FE)
     - Update view my request leave page (FE)
     - Update view leave form & Update has role leavetype (FE)
+    - Add Leave Balance getMyBalance (BE)
+    - Add Leave Balance Page & Content (FE)
+    - Update Leave Form, Leave Approval, leaveform.js display duration, leaveapproval.js seperated pending request (FE)
+    - Update leavetype form input (FE)
+    - Update Leave & User Page (FE)
+    - Add Dashboard (FE)
+    - Update Dashboard & Leave Form (FE)
+    - Update User Profile (FE)
+    - Implement auto reload on Pending & Responded Table (FE)
+    - Fix Department Table Show Manager (FE)
+    - Add Update User in User Management (FE)
+    - Update icon view history in my request (Leave) (FE)
+    - Update department edit for dropdown option (FE)
 
 ## **`Ketentuan Repository`**
 

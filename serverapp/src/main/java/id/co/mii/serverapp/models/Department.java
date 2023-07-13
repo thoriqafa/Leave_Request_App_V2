@@ -28,20 +28,19 @@ import lombok.NoArgsConstructor;
 @Table(name = "tb_department")
 public class Department {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-  @Column(length = 25, nullable = false)
-  private String name;
-  
-  @ManyToOne
-  @JoinColumn(name = "manager")
-  // @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-  // @JsonIgnore
-  private Employee employee;
+    @Column(length = 25, nullable = false)
+    private String name;
 
-  @OneToMany(mappedBy = "department")
-  @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-  private List<Employee> employees;
+    @ManyToOne
+    @JoinColumn(name = "manager")
+    // @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private Employee manager;
+
+    @OneToMany(mappedBy = "department")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private List<Employee> employees;
 }

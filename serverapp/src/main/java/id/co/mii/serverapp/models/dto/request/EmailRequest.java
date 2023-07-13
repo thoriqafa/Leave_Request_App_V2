@@ -1,6 +1,6 @@
 package id.co.mii.serverapp.models.dto.request;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,12 +15,12 @@ public class EmailRequest {
     private String subject;
     private String name;
     private String status;
-    // private String duration;
+//     private String duration;
     private Integer duration;
     // private String start_date;
-    private LocalDateTime start_date;
+    private LocalDate start_date;
     // private String end_date;
-    private LocalDateTime end_date;
+    private LocalDate end_date;
     private String type;
     private String notes;
     private String remaks;

@@ -28,5 +28,10 @@ public class RestLeaveHistoryController {
     public History getById(@PathVariable Long id){
         return leaveHistoryService.getById(id);
     }
+    
+    @GetMapping("/getMyHistory/{id}")
+    public List<History> getAllHistory(@PathVariable Long id){
+        return leaveHistoryService.getAllHistory(id);
+    }
 
 }

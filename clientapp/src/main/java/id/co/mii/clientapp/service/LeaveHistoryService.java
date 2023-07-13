@@ -38,4 +38,13 @@ public class LeaveHistoryService {
                 }).getBody();
     }
     
+    public List<History> getAllHistory(Long id) {
+        return restTemplate.exchange(
+                url + "/getMyHistory/" + id,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<History>>() {
+                }).getBody();
+    }
+    
 }

@@ -21,8 +21,8 @@
                                 <div class="col-sm-12">
                                     <div class="card-box table-responsive">
                                         <div class="text-right px-2">
-                                            <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                                data-bs-target="#createCountry">
+                                            <button type="button" class="btn btn-success" data-toggle="modal"
+                                                data-target="#createDepartment">
                                                 <i class="fa fa-plus"></i>
                                             </button>
                                         </div>
@@ -98,7 +98,7 @@
                     <div class="mb-3">
                         <input type="hidden" class="form-control" id="upd-department-id">
 
-                        <label for="upd-department-name" class="form-label text-dark">Leave Name</label>
+                        <label for="upd-department-name" class="form-label text-dark">Department Name</label>
                         <span id="required-star" class="required-field">*</span>
                         <input type="text" class="input-custom form-control" id="upd-department-name" required>
                         <div class="valid-feedback">
@@ -116,6 +116,45 @@
                         Close
                     </button>
                     <button type="button" class="btn btn-primary" onclick="update()">
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Create-->
+    <div class="modal fade" id="createDepartment" data-backdrop="static" data-keyboard="false" tabindex="-1"
+        role="dialog" aria-labelledby="updateDepartmentTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title font-weight-bold text-dark">
+                        Create Department
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <input type="hidden" class="form-control" id="upd-department-id">
+
+                        <label for="crt-department-name" class="form-label text-dark">Department Name</label>
+                        <span id="required-star" class="required-field">*</span>
+                        <input type="text" class="input-custom form-control" id="crt-department-name" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+
+                        <label for="crt-department-manager" class="form-label text-dark mt-3">Manager</label>
+                        <select name="Menager" class="form-control" id="crt-department-manager" required>
+                            <option selected disabled value="">- Choose Manager -</option>
+                        </select>                        
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="button" class="btn btn-primary" onclick="create()">
                         Save
                     </button>
                 </div>

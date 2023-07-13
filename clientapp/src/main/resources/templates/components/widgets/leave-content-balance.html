@@ -1,7 +1,42 @@
 <!-- LEAVE CONTENT BALANCE FRAGMENT START -->
 <div th:fragment="leave-content-balance">
     <div class="right_col pt-5" role="main">
-        <p class="text-center pt-3">Leave Balance status is 12 day.</p>
+        <div class="page-title">
+            <div class="title_left">
+                <h3>
+                    Leave/Balance Status
+                </h3>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="card text-left text-dark">
+            <div class="card-header text-light font-weight-bold" style="background-color: #2a3f54;">
+                Your Balance
+            </div>
+            <div class="card-body">
+                <div class="form-outline mb-4 mt-4">                    
+                    <div class="input-group mb-3">
+                        <span class="input-group-text d-inline-block text-light text-left" style="width: 120px; background-color: #2a3f54;">
+                            Current Year
+                        </span>
+                        <input id="current-year" type="text" class="form-control" aria-label="Email" aria-describedby="basic-addon2" disabled />
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text d-inline-block text-light text-left" style="width: 120px; background-color: #2a3f54;">
+                            Last Year
+                        </span>
+                        <input id="last-year" type="text" class="form-control" aria-label="Name" aria-describedby="basic-addon3" disabled />
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text d-inline-block text-light text-left" style="width: 120px; background-color: #2a3f54;">
+                            Total
+                        </span>
+                        <input id="total-year" type="text" class="form-control" aria-label="Name" aria-describedby="basic-addon3" disabled />
+                    </div>
+                </div>                
+            </div>           
+        </div>
     </div>
 </div>
 <!-- LEAVE CONTENT BALANCE FRAGMENT END -->

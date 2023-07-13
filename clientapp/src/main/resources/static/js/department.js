@@ -1,5 +1,8 @@
 $(document).ready(function(){
     $('#datatable-fixed-header').DataTable({
+        scrollX: true, // Memberikan scroll horizontal
+        scrollY: '260px', // Memberikan scroll vertikal dengan tinggi 300px (sesuaikan dengan kebutuhan)
+        scrollCollapse: true, // Mengaktifkan penggulungan scroll jika datanya melebihi tinggi yang ditentukan    
         ajax: {
             url: '/api/department',
             dataSrc: ''
@@ -15,7 +18,7 @@ $(document).ready(function(){
                 data: 'name'
             },
             {
-                data: 'employee.name',
+                data: 'manager.name',
                 // render: function(data, type, row){
                 //     // if (row.employee) {
                 //     //     return row.employee.name;
@@ -60,8 +63,8 @@ function findById(id) {
       success: (result) => {
         $("#department-id").text(`${result.id}`);
         $("#department-name").text(`${result.name}`);
-        if (result.employee) {
-            $("#department-manager").text(`${result.employee.name}`);
+        if (result.manager) {
+            $("#department-manager").text(`${result.manager.name}`);
           } else {
             $("#department-manager").text("No Manager Assigned");
           }
@@ -77,7 +80,38 @@ function beforeUpdate(id) {
       success: (result) => {
         $("#upd-department-id").val(`${result.id}`);
         $("#upd-department-name").val(`${result.name}`);
-        $("#upd-department-manager").val(`${result.employee.name}`);
+        // $("#upd-department-manager").val(`${result.employee.name}`);
+
+        // Mengosongkan elemen select sebelum menambahkan opsi
+        const managerId = result.manager.id;
+        const managerName = result.manager.name;
+  
+        // Menambahkan opsi employee dari URL "/api/user/" + id
+        const option = $("<option>")
+          .val(managerId)
+          .text(managerName);
+        
+        option.attr("selected", "selected");
+        
+        // Mengosongkan elemen select sebelum menambahkan opsi
+        $("#upd-department-manager").empty();
+        $("#upd-department-manager").append(option);
+        
+        // Menampilkan pilihan dropdown dari respons AJAX kedalam elemen select yang sama
+        $.ajax({
+          url: "/api/employee",
+          method: "GET",
+          dataType: "JSON",
+          success: (result) => {
+            let text = "";
+            $.each(result, function(key, val) {
+                if (val.name !== managerName) {
+                    text += `<option value="${val.id}">${val.name}</option>`;
+                }              
+            });
+            $("#upd-department-manager").append(text);
+          }
+        });
       },
     });
 }
@@ -123,4 +157,42 @@ function update() {
         });
       }
     });
+}
+
+function create() {
+  let name = $("#crt-department-name").val();
+  let employee = $("#crt-department-manager").val();
+
+  // Mengubah nilai day_num menjadi null jika tidak ada input yang dimasukkan
+  if (employee === null) {
+    employee = "";
+  }
+
+  $.ajax({
+    url: "/api/department",
+    method: "POST",
+    dataType: "JSON",
+    contentType: "application/json",
+    beforeSend: addCsrfToken(),
+    data: JSON.stringify({
+      name: name,
+      employee: { 
+        id: employee
+      },
+    }),
+    success: (result) => {
+      $("#createDepartment").modal("hide");
+      $("#datatable-fixed-header").DataTable().ajax.reload();
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "New department has been created.",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    },
+  });
+
+  $("#crt-department-name").val("");
+  $("#crt-department-manager").val("");
 }

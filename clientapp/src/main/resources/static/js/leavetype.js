@@ -1,5 +1,8 @@
 $(document).ready(function () {
   $("#table-leavetype").DataTable({
+    scrollX: true,
+    scrollY: '260px',
+    scrollCollapse: true,
     ajax: {
       url: "/api/leavetype",
       dataSrc: "",
@@ -78,6 +81,9 @@ function create() {
       });
     },
   });
+
+  $("#crt-leavetype-name").val("");
+  $("#crt-leavetype-daynum").val("");
 }
 
 function beforeUpdate(id) {

@@ -18,7 +18,7 @@ import lombok.AllArgsConstructor;
 @RequestMapping("/api/leaverequest")
 @AllArgsConstructor 
 public class RestLeaveRequestController {
-    public LeaveRequestService leaveRequestService;
+    private LeaveRequestService leaveRequestService;
 
     @GetMapping
     public List<LeaveRequest> getAll(){
@@ -42,6 +42,7 @@ public class RestLeaveRequestController {
 
     @PostMapping
     public LeaveRequest create(@RequestBody LeaveRequest leaveRequest){
+        System.out.println(leaveRequest);
         return leaveRequestService.create(leaveRequest);
     }
 

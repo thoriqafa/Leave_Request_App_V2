@@ -6,6 +6,7 @@ import id.co.mii.serverapp.models.LeaveRequest;
 import id.co.mii.serverapp.models.LeaveStatus;
 import id.co.mii.serverapp.models.dto.request.LeaveRequestApply;
 import id.co.mii.serverapp.repositories.HistoryRepository;
+import id.co.mii.serverapp.repositories.LeaveRequestRepository;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,7 @@ import lombok.AllArgsConstructor;
 public class HistoryService {
 
     private HistoryRepository historyRepository;
+    private LeaveRequestRepository leaveRequestRepository;
 
     public List<History> getAll() {
         return historyRepository.findAll();
@@ -30,6 +32,12 @@ public class HistoryService {
                 .orElseThrow(() -> new ResponseStatusException(
                         HttpStatus.NOT_FOUND,
                         " History not found !"));
-    }   
+    }
+    
+    public List<History> getAllHistory(Long id){
+        LeaveRequest leaveRequest = leaveRequestRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "LeaveRequest not found!"));
+        return historyRepository.findByLeaveRequestId(leaveRequest);
+    }
 
 }

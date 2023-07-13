@@ -6,6 +6,8 @@ import id.co.mii.serverapp.models.Role;
 import id.co.mii.serverapp.models.User;
 import id.co.mii.serverapp.models.dto.request.UserRequest;
 import id.co.mii.serverapp.repositories.UserRepository;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import java.util.List;
@@ -13,6 +15,8 @@ import lombok.AllArgsConstructor;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -30,6 +34,11 @@ public class UserService {
   public List<User> getAll() {
     return userRepository.findAll();
   }
+
+  public String getCurrentUsername() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return authentication.getName();
+    }
 
   public User getById(Long id) {
     return userRepository
@@ -50,7 +59,7 @@ public class UserService {
     user.setEmployee(employee);
     user.setPassword(passwordEncoder.encode(user.getPassword()));
     employee.setUser(user);
-    employee.setHire_date(LocalDateTime.now());
+    employee.setHire_date(LocalDate.now());
 
     return userRepository.save(user);
   }

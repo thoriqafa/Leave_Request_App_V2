@@ -1,6 +1,7 @@
 package id.co.mii.serverapp.services;
 
-import java.time.LocalDateTime;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
@@ -21,6 +22,7 @@ import id.co.mii.serverapp.models.dto.request.LeaveRequestApply;
 import id.co.mii.serverapp.repositories.HistoryRepository;
 import id.co.mii.serverapp.repositories.LeaveRequestRepository;
 import id.co.mii.serverapp.repositories.UserRepository;
+import java.time.temporal.ChronoUnit;
 import lombok.AllArgsConstructor;
 
 @Service
@@ -75,13 +77,33 @@ public class LeaveRequestService {
         //set pending status
         LeaveStatus leaveStatus = leaveStatusService.getById(1L);
         leaveRequest.setLeaveStatus(leaveStatus);
+        //leaveRequest.setDuration(Integer.SIZE);
         leaveRequest.setEmployee(employee);
+
+        LocalDate startDate,endDate;
+
+        if (leaveRequest.getLeaveType().getId() == 6) {
+            startDate = leaveRequest.getStart_date();
+            endDate = startDate.plusDays(90);
+        }
+        else if (leaveRequest.getLeaveType().getId() == 3) {
+            startDate = leaveRequest.getStart_date();
+            endDate = startDate.plusDays(3);
+        }else{
+            startDate = leaveRequest.getStart_date();
+            endDate = (leaveRequest.getEnd_date() == null)? startDate.plusDays(1) : leaveRequest.getEnd_date();
+        }
+        
+        int duration = (int) ChronoUnit.DAYS.between(startDate, endDate) + 1;
+        System.out.println(duration);
+        leaveRequest.setEnd_date(endDate);
+        leaveRequest.setDuration(duration);
 
         leaveRequest = leaveRequestRepository.save(leaveRequest);
 
         history.setLeaveRequest(leaveRequest);
         history.setEmployee(employee);
-        history.setDate(LocalDateTime.now());
+        history.setDate(LocalDate.now());
         history.setLeaveStatus(leaveStatus);
         historyRepository.save(history);
 
@@ -112,7 +134,7 @@ public class LeaveRequestService {
         history.setLeaveRequest(leaveRequest);
         history.setRemarked(leaveRequestApply.getRemarked());
         history.setEmployee(employee);
-        history.setDate(LocalDateTime.now());
+        history.setDate(LocalDate.now());
         history.setLeaveStatus(leaveStatus);
         historyRepository.save(history);
 
@@ -145,7 +167,7 @@ public class LeaveRequestService {
         history.setLeaveRequest(leaveRequest);
         history.setRemarked(leaveRequestApply.getRemarked());
         history.setEmployee(employee);
-        history.setDate(LocalDateTime.now());
+        history.setDate(LocalDate.now());
         history.setLeaveStatus(leaveStatus);
         historyRepository.save(history);
 
@@ -178,7 +200,7 @@ public class LeaveRequestService {
         history.setLeaveRequest(leaveRequest);
         history.setRemarked(leaveRequestApply.getRemarked());
         history.setEmployee(employee);
-        history.setDate(LocalDateTime.now());
+        history.setDate(LocalDate.now());
         history.setLeaveStatus(leaveStatus);
         historyRepository.save(history);
 
@@ -190,16 +212,28 @@ public class LeaveRequestService {
         String subject = "Leave Request Status";
         String name = leaveRequest.getEmployee().getName();
         String status = leaveRequest.getLeaveStatus().getName();
-        Integer duration = leaveRequest.getDuration();
-        LocalDateTime start_date = leaveRequest.getStart_date();
-        LocalDateTime end_date = leaveRequest.getEnd_date();
+        LocalDate start_date = leaveRequest.getStart_date();
+        LocalDate end_date = leaveRequest.getEnd_date();
+        // Integer duration = leaveRequest.getDuration();
+
+        // duration start
+        long daysBetween = ChronoUnit.DAYS.between(start_date, end_date);
+        Integer duration = (int)daysBetween+1;
+        int weekends = 0;
+        for (LocalDate date = start_date; date.isBefore(end_date); date = date.plusDays(1)) {
+            if (date.getDayOfWeek() == DayOfWeek.SATURDAY || date.getDayOfWeek() == DayOfWeek.SUNDAY) {
+                weekends++;
+            }
+        }
+        duration -= weekends;
+        // duration end
+
         String type = leaveRequest.getLeaveType().getName();
         String notes = leaveRequest.getNotes();
 
         // Menyisipkan data remarked hanya jika ada pada parameter
         String remarks = (remarked != null) ? remarked : "No Remarks - Accepted"; // Simpan remarked dalam variabel remarks terpisah
 
-    
         EmailRequest emailRequest = new EmailRequest(to, subject, name, status, duration, start_date, end_date, type, notes, remarks);
     
         emailService.sendHtmlMessage(emailRequest);

@@ -18,7 +18,7 @@
                     <ul class="nav child_menu">
                         <li sec:authorize="hasAnyRole('manager','employee')"><a th:href="@{/leave}">Form</a></li>
                         <li sec:authorize="hasAnyRole('manager','employee')"><a th:href="@{/leave/myrequest}">My Request</a></li>
-                        <li sec:authorize="hasAnyRole('manager','employee')"><a th:href="@{/leave/history}">History</a></li>
+                        <!-- <li sec:authorize="hasAnyRole('manager','employee')"><a th:href="@{/leave/history}">History</a></li> -->
                         <li sec:authorize="hasRole('manager')"><a th:href="@{/leave/approval}">Approval</a></li>
                         <li sec:authorize="hasAnyRole('employee','manager')"><a th:href="@{/leave/balance}">Balance Status</a></li>
                     </ul>

@@ -25,5 +25,10 @@ public class HistoryController {
     public History getById(@PathVariable Long id){
         return historyService.getById(id);
     }
+    
+    @GetMapping("/getMyHistory/{id}")
+    public List<History> getAllHistory(@PathVariable Long id){
+        return historyService.getAllHistory(id);
+    }
 
 }

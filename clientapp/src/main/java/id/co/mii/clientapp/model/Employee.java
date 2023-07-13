@@ -1,6 +1,6 @@
 package id.co.mii.clientapp.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,10 +17,10 @@ public class Employee {
     private String phone;
     private Gender gender;
     private Boolean is_married;
-    private LocalDateTime hire_date;
+    private LocalDate hire_date;
     private String address;
     private User user;
     // private Department department;
-    // private Employee employee;
+    private Employee employee;
 
 }

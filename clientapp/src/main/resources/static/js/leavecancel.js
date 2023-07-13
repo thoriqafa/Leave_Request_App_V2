@@ -1,5 +1,8 @@
 $(document).ready(function () {
-    $('#datatable-fixed-header').DataTable({
+    $('#table-myrequest').DataTable({
+        scrollX: true,
+        scrollY: '260px',
+        scrollCollapse: true,
         ajax: {
             url: '/api/leaverequest/my?username=current',
             dataSrc: ''
@@ -14,9 +17,9 @@ $(document).ready(function () {
             {
                 data: 'start_date',
                 defaultContent: '',
-                render: function(data, type, row) {
+                render: function (data, type, row) {
                     if (type === 'display' && data !== null) {
-                      return moment(data).format('DD MMMM YYYY');
+                        return moment(data).format('DD MMMM YYYY');
                     }
                     return data;
                 }
@@ -24,9 +27,9 @@ $(document).ready(function () {
             {
                 data: 'end_date',
                 defaultContent: '',
-                render: function(data, type, row) {
+                render: function (data, type, row) {
                     if (type === 'display' && data !== null) {
-                      return moment(data).format('DD MMMM YYYY');
+                        return moment(data).format('DD MMMM YYYY');
                     }
                     return data;
                 }
@@ -55,13 +58,13 @@ $(document).ready(function () {
                     let leaveStatusId = row.leaveStatus.id;
 
                     if (row.leaveStatus.name === "Pending") {
-                    badgeClass = 'badge badge-warning';
+                        badgeClass = 'badge badge-warning';
                     } else if (row.leaveStatus.name === "Accepted") {
-                    badgeClass = 'badge badge-success';
+                        badgeClass = 'badge badge-success';
                     } else if (leaveStatusId === 3) {
-                    badgeClass = 'badge badge-danger';
+                        badgeClass = 'badge badge-danger';
                     } else {
-                    badgeClass = 'badge badge-secondary';
+                        badgeClass = 'badge badge-secondary';
                     }
 
                     return `<span class="${badgeClass}">${row.leaveStatus.name}</span>`;
@@ -73,22 +76,76 @@ $(document).ready(function () {
                 render: function (data, type, row, meta) {
                     if (row.leaveStatus.id === 1) {
                         return `
-                        <button type="button" class="btn btn-danger" data-toggle="modal" onclick="cancelRequest(${row.id})">
-                            <i class="fa fa-remove"></i>
+                        <button title="history" type="button" class="btn btn-primary" data-target="#detailHistory" data-toggle="modal" onclick="histRequest(${row.id})">
+                            <i class="fa fa-eye"></i>
                         </button>                  
+                        <button title="cancel" type="button" class="btn btn-danger" data-toggle="modal" onclick="cancelRequest(${row.id})">
+                            <i class="fa fa-remove"></i>
+                        </button>
                         `;
                     } else {
                         return `
-                        <button type="button" class="btn btn-danger" data-toggle="modal" onclick="cancelRequest(${row.id})" disabled>
+                        <button title="history" type="button" class="btn btn-primary" data-target="#detailHistory" data-toggle="modal" onclick="histRequest(${row.id})">
+                            <i class="fa fa-eye"></i>
+                        </button>                                       
+                        <button title="cancel" type="button" class="btn btn-danger" data-toggle="modal" onclick="cancelRequest(${row.id})" disabled>
                             <i class="fa fa-remove"></i>
                         </button>                                      
+                        </button>
                         `;
-                    }
+                    }                 
                 }
             }
         ]
-    });    
+    });
 });
+
+function histRequest(id) {
+    $.ajax({
+        url: "/api/history/getMyHistory/" + id,
+        method: "GET",
+        dataType: "JSON",
+        success: function (data) {
+            var list = $('#historyTimeline');
+            var html = ""; // Membuat variabel string kosong
+
+            for (var i = 0; i < data.length; i++) {
+                var tgl = data[i].date;
+                var employee = data[i].employee.name;
+                var remarked = data[i].remarked;
+                var role = data[i].employee.user.role.name;
+                var leaveStatus = data[i].leaveStatus.name;
+                var leaveRequestStart = data[i].leaveRequest.start_date;
+                var leaveRequestEnd = data[i].leaveRequest.end_date;
+
+                // Menggabungkan elemen HTML ke dalam variabel html
+                html += `<li>
+                    <div class="block">
+                        <div class="tags">
+                            <p class="tag">
+                                <span>${tgl}</span>
+                            </p>
+                        </div>
+                        <div class="block_content">
+                            <h2 class="title">
+                                <a>${leaveStatus}</a>
+                            </h2>
+                            <div class="byline">
+                                <span>Processed</span> by <a>${employee}</a> as ${role}
+                            </div>
+                            <p class="excerpt">Telah di ${leaveStatus} oleh ${employee} untuk melakukan cuti mulai ${leaveRequestStart} hingga ${leaveRequestEnd} dengan catatan ${remarked}</a>
+                            </p>
+                        </div>
+                    </div>
+                </li>`;
+            }
+
+            // Menambahkan semua elemen HTML ke dalam elemen list
+            list.html(html);
+        }
+    });
+}
+
 
 function cancelRequest(id) {
     let remarked = "Congratulations !";
@@ -100,24 +157,24 @@ function cancelRequest(id) {
         method: "GET",
         dataType: "JSON",
         success: (result) => {
-           requestId = result.id;
-           startDate = result.start_date;
-           endDate = result.end_date;
-           notes = result.notes;
-           attachment = result.attachment;
-           employeeId = result.employee.id;
-           leaveTypeId = result.leaveType.id;
+            requestId = result.id;
+            startDate = result.start_date;
+            endDate = result.end_date;
+            notes = result.notes;
+            attachment = result.attachment;
+            employeeId = result.employee.id;
+            leaveTypeId = result.leaveType.id;
         },
     });
 
     Swal.fire({
         title: "Are you sure?",
-        text: "Want to approve this request?",
+        text: "Want to Cancel this request?",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, approve it!",
+        confirmButtonText: "Yes, cancel it!",
     }).then((result) => {
         if (result.isConfirmed) {
             $.ajax({
@@ -141,11 +198,11 @@ function cancelRequest(id) {
                 }),
                 success: (result) => {
                     $("#approveLeave").modal("hide");
-                    $("#datatable-fixed-header").DataTable().ajax.reload();
+                    $("#table-myrequest").DataTable().ajax.reload();
                     Swal.fire({
                         position: "center",
                         icon: "success",
-                        title: "Your request has been approved.",
+                        title: "Your request has been canceled.",
                         showConfirmButton: false,
                         timer: 1500,
                     });

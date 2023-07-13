@@ -34,15 +34,15 @@ $(document).ready(function(){
                 defaultContent:''
             },
             {
-                data: 'leaveRequest.leaveStatus.name',
+                data: 'leaveStatus.name',
                 defaultContent:'',
                 render: function (data, type, row, meta) {
                     let badgeClass = '';
-                    let leaveReqStatusId = row.leaveRequest.leaveStatus.id;
+                    let leaveReqStatusId = row.leaveStatus.id;
 
-                    if (row.leaveRequest.leaveStatus.name === "Pending") {
+                    if (row.leaveStatus.name === "Pending") {
                     badgeClass = 'badge badge-warning';
-                    } else if (row.leaveRequest.leaveStatus.name === "Accepted") {
+                    } else if (row.leaveStatus.name === "Accepted") {
                     badgeClass = 'badge badge-success';
                     } else if (leaveReqStatusId === 3) {
                     badgeClass = 'badge badge-danger';
@@ -50,7 +50,7 @@ $(document).ready(function(){
                     badgeClass = 'badge badge-secondary';
                     }
 
-                    return `<span class="${badgeClass}">${row.leaveRequest.leaveStatus.name}</span>`;
+                    return `<span class="${badgeClass}">${row.leaveStatus.name}</span>`;
                 }
             },            
             {

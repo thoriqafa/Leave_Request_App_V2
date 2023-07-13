@@ -1,7 +1,7 @@
 package id.co.mii.serverapp.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,10 +28,10 @@ public class LeaveRequest {
   private Long id;
 
   @Column(nullable = false)
-  private LocalDateTime start_date;
+  private LocalDate start_date;
 
   @Column
-  private LocalDateTime end_date;
+  private LocalDate end_date;
 
   @Column
   private Integer duration;

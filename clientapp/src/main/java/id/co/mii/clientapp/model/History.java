@@ -1,6 +1,6 @@
 package id.co.mii.clientapp.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class History {
     private Long id;
-    private LocalDateTime date;
+    private LocalDate date;
     private String remarked;
     private Employee employee;
     private LeaveStatus leaveStatus;

@@ -1,6 +1,6 @@
 package id.co.mii.serverapp.models;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,7 +28,7 @@ public class History {
   private String remarked;
 
   @Column(length = 25, nullable = false)
-  private LocalDateTime date;
+  private LocalDate date;
 
   @ManyToOne
   @JoinColumn(name = "leave_request", nullable = false)

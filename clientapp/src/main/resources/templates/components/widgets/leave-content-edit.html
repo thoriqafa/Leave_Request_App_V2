@@ -7,7 +7,7 @@
                     <h3>
                         Leave/My Request
                     </h3>
-                </div>                
+                </div>
             </div>
             <div class="clearfix"></div>
             <div class="row">
@@ -17,7 +17,7 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="card-box table-responsive">
-                                        <table id="datatable-fixed-header" class="table table-striped table-bordered"
+                                        <!-- <table id="table-myrequest" class="table table-striped table-bordered dt-responsive nowrap"
                                             style="width:100%">
                                             <thead>
                                                 <tr>
@@ -32,12 +32,164 @@
                                                     <th class="col-2">Action</th>
                                                 </tr>
                                             </thead>
+                                        </table> -->
+                                        <table id="table-myrequest"
+                                            class="table table-striped table-bordered dt-responsive nowrap"
+                                            style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>Start Date</th>
+                                                    <th>End Date</th>
+                                                    <th>Duration</th>
+                                                    <th>Note</th>
+                                                    <th>Employee</th>
+                                                    <th>Type</th>
+                                                    <th>Status</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
                                         </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+
+
+
+            <!-- <div class="col-md-12 col-sm-12 ">
+                <div class="x_panel">                    
+                    <div class="x_content">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card-box table-responsive">                                    
+                                    <table id="datatable-responsive"
+                                        class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0"
+                                        width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th>First name</th>
+                                                <th>Last name</th>
+                                                <th>Position</th>
+                                                <th>Office</th>
+                                                <th>Age</th>
+                                                <th>Start date</th>
+                                                <th>Salary</th>
+                                                <th>Extn.</th>
+                                                <th>E-mail</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Tiger</td>
+                                                <td>Nixon</td>
+                                                <td>System Architect</td>
+                                                <td>Edinburgh</td>
+                                                <td>61</td>
+                                                <td>2011/04/25</td>
+                                                <td>$320,800</td>
+                                                <td>5421</td>
+                                                <td>t.nixon@datatables.net</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Garrett</td>
+                                                <td>Winters</td>
+                                                <td>Accountant</td>
+                                                <td>Tokyo</td>
+                                                <td>63</td>
+                                                <td>2011/07/25</td>
+                                                <td>$170,750</td>
+                                                <td>8422</td>
+                                                <td>g.winters@datatables.net</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ashton</td>
+                                                <td>Cox</td>
+                                                <td>Junior Technical Author</td>
+                                                <td>San Francisco</td>
+                                                <td>66</td>
+                                                <td>2009/01/12</td>
+                                                <td>$86,000</td>
+                                                <td>1562</td>
+                                                <td>a.cox@datatables.net</td>
+                                            </tr>                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+
+    <!-- Modal Detail-->
+    <div class="modal fade" id="detailHistory" tabindex="-1" role="dialog" aria-labelledby="detailHistoryTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title font-weight-bold text-dark">
+                        Leave History
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    <!-- <table class="vitals-table text-dark" style="width: 100%;">
+                        <tbody>
+                            <tr>
+                                <th>ID</th>
+                                <td id="leavetype-id"></td>
+                            </tr>
+                            <tr>
+                                <th>Name</th>
+                                <td id="leavetype-name"></td>
+                            </tr>
+                            <tr>
+                                <th>Total Days</th>
+                                <td id="leavetype-daynum"></td>
+                            </tr>
+                        </tbody>
+                    </table> -->
+                    <div class="col-md-12 col-sm-12  ">
+                        <div class="x_panel">
+                            <div class="x_content">
+                                <ul class="list-unstyled timeline" id="historyTimeline">
+                                    <!-- <li>
+                                        <div class="block">
+                                            <div class="tags">
+                                                <a href="" class="tag">
+                                                    <span>Entertainment</span>
+                                                </a>
+                                            </div>
+                                            <div class="block_content">
+                                                <h2 class="title">
+                                                    <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
+                                                </h2>
+                                                <div class="byline">
+                                                    <span>13 hours ago</span> by <a>Jane Smith</a>
+                                                </div>
+                                                <p class="excerpt">Film festivals used to be do-or-die moments for movie
+                                                    makers. They were where you met the producers that could fund your
+                                                    project, and if the buyers liked your flick, they’d pay to
+                                                    Fast-forward and… <a>Read&nbsp;More</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </li> -->
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        Close
+                    </button>
                 </div>
             </div>
         </div>

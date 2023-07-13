@@ -53,6 +53,8 @@ function toggleFullscreen() {
 }
 
 // Cek status fullscreen saat halaman dimuat
+
+/*
 document.addEventListener('DOMContentLoaded', function() {
     var toggleFullscreenButton = document.getElementById('toggleFullscreenButton');
 
@@ -61,6 +63,24 @@ document.addEventListener('DOMContentLoaded', function() {
         toggleFullscreenButton.textContent = 'Close Fullscreen';
     } else {
         toggleFullscreenButton.textContent = 'Open Fullscreen';
+    }
+});
+*/
+
+document.addEventListener('DOMContentLoaded', function() {
+    var toggleFullscreenButton = document.getElementById('toggleFullscreenButton');
+    var iconElement = toggleFullscreenButton.querySelector('span');
+    var fullscreenStatus = localStorage.getItem('fullscreenStatus');
+
+    if (fullscreenStatus === 'true') {
+        openFullscreen();
+        toggleFullscreenButton.setAttribute('title', 'Exit Fullscreen');
+        iconElement.classList.remove('glyphicon-fullscreen');
+        iconElement.classList.add('glyphicon-resize-small');
+    } else {
+        toggleFullscreenButton.setAttribute('title', 'Fullscreen');
+        iconElement.classList.remove('glyphicon-resize-small');
+        iconElement.classList.add('glyphicon-fullscreen');
     }
 });
 // FULLSCREEN END

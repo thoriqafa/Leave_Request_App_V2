@@ -18,7 +18,6 @@ import lombok.AllArgsConstructor;
 
 @RestController
 @RequestMapping("/api/department")
-@PreAuthorize("hasRole('admin')")
 @AllArgsConstructor
 public class RestDepartmentController {
     
@@ -34,17 +33,21 @@ public class RestDepartmentController {
         return departmentService.getById(id);
     }
     
+    
     @PostMapping
+    @PreAuthorize("hasRole('admin')")
     public Department create(@RequestBody Department department){
         return departmentService.create(department);
     }
     
     @PutMapping("/{id}")
+    @PreAuthorize("hasRole('admin')")
     public Department update(@PathVariable Long id, @RequestBody Department department){
         return departmentService.update(id, department);
     }
     
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('admin')")
     public Department delete(@PathVariable Long id){
         return departmentService.delete(id);
     }

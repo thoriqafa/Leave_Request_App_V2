@@ -26,3 +26,26 @@ input.form-control:invalid + .invalid-feedback {
   color: red;
   margin-left: 5px;
 }
+
+/* Kasih efek icon haert di footer */
+.footer {
+  color: white;
+  text-align: center;
+}
+
+@keyframes heartBeat {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.fa-heart {
+  color: #dc2550;
+  animation: heartBeat 1s infinite;
+}

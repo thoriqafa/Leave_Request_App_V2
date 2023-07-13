@@ -25,16 +25,11 @@
                                             style="width:100%">
                                             <thead>
                                                 <tr>
-                                                    <th>No</th>
-                                                    <th>Name</th>
-                                                    <th>Email</th>
-                                                    <th>Phone</th>
-                                                    <th>Gender</th>
-                                                    <th>Married</th>
-                                                    <th>Hire Date</th>
-                                                    <th>Address</th>
-                                                    <th>Role</th>
-                                                    <th>Action</th>
+                                                    <th class="col-1">No</th>
+                                                    <th class="col-3">Name</th>
+                                                    <th class="col-3">Manager</th>                                                    
+                                                    <th class="col-2">Role</th>
+                                                    <th class="col-3">Action</th>
                                                 </tr>
                                             </thead>
                                         </table>
@@ -88,14 +83,14 @@
 
                     <label for="crt-user-role" class="form-label text-dark mt-3">Role</label>
                     <span id="required-star" class="required-field">*</span>
-                    <select name="Role" class="form-control" id="crt-user-role" required>
+                    <select name="Role" class="form-control dropdown-role" id="crt-user-role" required>
                         <option selected disabled value="">- Choose Role -</option>
                     </select>
 
                     <label id="department-label" for="crt-user-department"
                         class="form-label text-dark mt-3">Department<span id="required-star"
                             class="required-field">*</span></label>
-                    <select name="Department" class="form-control" id="crt-user-department" required>
+                    <select name="Department" class="form-control dropdown-department" id="crt-user-department" required>
                         <option selected disabled value="">- Choose Department -</option>
                     </select>
                 </div>
@@ -110,5 +105,91 @@
             </div>
         </div>
     </div>
+</div>
+
+<!-- Modal Update-->
+<div class="modal fade" id="update-user" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
+    aria-labelledby="detailLeavetypeTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title font-weight-bold text-dark">
+                    Update User
+                </h5>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <input type="hidden" class="form-control" id="upd-user-id">
+
+                    <label for="upd-user-username" class="form-label text-dark">Username</label>
+                    <span id="required-star" class="required-field">*</span>
+                    <input type="text" class="form-control" id="upd-user-username" required>                    
+
+                    <label for="upd-user-role" class="form-label text-dark mt-3">Role</label>
+                    <span id="required-star" class="required-field">*</span>
+                    <select name="Role" class="form-control dropdown-role" id="upd-user-role" required>
+                        <option selected disabled value="">- Choose Role -</option>
+                    </select>                    
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="update()">
+                    Save
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+ <!-- Modal Detail-->
+ <div class="modal fade" id="detailEmployee" tabindex="-1" role="dialog" aria-labelledby="detailLeavetypeTitle"
+ aria-hidden="true">
+ <div class="modal-dialog modal-dialog-centered" role="document">
+     <div class="modal-content">
+         <div class="modal-header">
+             <h5 class="modal-title font-weight-bold text-dark">
+                 User Detail
+             </h5>
+         </div>
+         <div class="modal-body">
+             <table class="vitals-table text-dark" style="width: 100%;">
+                 <tbody>
+                     <tr>
+                         <th class="col-4">Name</th>
+                         <td id="employee-name"></td>
+                     </tr>
+                     <tr>
+                         <th class="col-4">Email</th>
+                         <td id="employee-email"></td>
+                     </tr>
+                     <tr>
+                         <th class="col-4">Phone</th>
+                         <td id="employee-phone"></td>
+                     </tr>
+                     <tr>
+                         <th class="col-4">Martial Status</th>
+                         <td id="employee-status"></td>
+                     </tr>
+                     <tr>
+                         <th class="col-4">Hire Date</th>
+                         <td id="employee-hire-date"></td>
+                     </tr>
+                     <tr>
+                         <th class="col-4">Address</th>
+                         <td id="employee-address"></td>
+                     </tr>
+                 </tbody>
+             </table>
+         </div>
+         <div class="modal-footer">
+             <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                 Close
+             </button>
+         </div>
+     </div>
+ </div>
 </div>
 <!-- LEAVE FORM FRAGMENT END -->

@@ -28,11 +28,38 @@ public class UserService {
                 new ParameterizedTypeReference<List<User>>() {
                 }).getBody();
     }
+    
+    public User getById(Long id) {
+        return restTemplate.exchange(
+                url + "/" + id,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<User>() {
+                }).getBody();
+    }
+
+    public String getCurrentUsername() {
+        return restTemplate.exchange(
+                url + "/current-username",
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<String>() {
+                }).getBody();
+    }
 
     public User create(User user){
         return restTemplate.exchange(
             url,
             HttpMethod.POST,
+            new HttpEntity(user),
+            new ParameterizedTypeReference<User>(){
+            }).getBody();
+    } 
+    
+    public User update(Long id, User user){
+        return restTemplate.exchange(
+            url + "/" + id,
+            HttpMethod.PUT,
             new HttpEntity(user),
             new ParameterizedTypeReference<User>(){
             }).getBody();
