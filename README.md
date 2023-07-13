@@ -20,9 +20,12 @@
 - Fix DB Relation
 - Layouting
 - Modul login
-- Modul CRUD user (Admin)
-- Approve & Reject
+- Modul Leave Form
+- Modul Leave My Request
+- Modul Approve & Reject
+- Modul Leave History
 - Email Notification
+- Modul Leave Balance Status
 
 ## **`Project Task`**
 - **`Kevin Krisna Adji Pratama` :**
