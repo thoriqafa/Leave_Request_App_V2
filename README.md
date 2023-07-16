@@ -14,6 +14,8 @@
 - [Postman](https://documenter.getpostman.com/view/23371379/2s93zB4M1n)
 - [FE Repository](https://github.com/anonimuslim/fe-final-project-mcc/)
 - [BE Repository](https://github.com/anonimuslim/be-final-project-mcc/)
+- [PPT](https://docs.google.com/presentation/d/14ji7meDVxbDB6MKeuckqnpf1B1XadgjB/edit#slide=id.p1)
+- [User Manual](https://drive.google.com/file/d/1Mmn5h9_wk44qDZw19HH3ZYA8008rrVy6/view?usp=sharing)
 
 ## **`Priority`**
 - Set Dummy in DB

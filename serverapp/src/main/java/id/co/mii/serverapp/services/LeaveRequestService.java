@@ -91,7 +91,7 @@ public class LeaveRequestService {
             endDate = startDate.plusDays(3);
         }else{
             startDate = leaveRequest.getStart_date();
-            endDate = (leaveRequest.getEnd_date() == null)? startDate.plusDays(1) : leaveRequest.getEnd_date();
+            endDate = (leaveRequest.getEnd_date() == null)? startDate.plusDays(0) : leaveRequest.getEnd_date();
         }
         
         int duration = (int) ChronoUnit.DAYS.between(startDate, endDate) + 1;
