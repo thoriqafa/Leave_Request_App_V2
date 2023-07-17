@@ -138,7 +138,9 @@ function create() {
                 timer: 1500
             });            
             // Melakukan redirect ke halaman lain
-            window.location.href = "leave/myrequest";
+            setTimeout(function() {
+                window.location.href = "leave/myrequest";
+            }, 1000);
           },
           error: function(xhr, status, error) {
             // Handle ketika terjadi error

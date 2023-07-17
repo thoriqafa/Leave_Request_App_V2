@@ -6,7 +6,7 @@ $(document).ready(function () {
     
     $('#table-pending').DataTable({
         scrollX: true,
-        scrollY: '260px',
+        scrollY: '420px',
         scrollCollapse: true,
         ajax: {
             url: '/api/leaverequest/requests',
@@ -130,7 +130,7 @@ $(document).ready(function () {
 
     $('#table-responded').DataTable({
         scrollX: true,
-        scrollY: '260px',
+        scrollY: '420px',
         scrollCollapse: true,
         ajax: {
             url: '/api/leaverequest/requests',

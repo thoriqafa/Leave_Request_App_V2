@@ -1,10 +1,10 @@
 $(document).ready(function () {
     $('#table-myrequest').DataTable({
         scrollX: true,
-        scrollY: '260px',
+        scrollY: '420px',
         scrollCollapse: true,
         ajax: {
-            url: '/api/leaverequest/my?username=current',
+            url: '/api/leaverequest/my',
             dataSrc: ''
         },
         columns: [
