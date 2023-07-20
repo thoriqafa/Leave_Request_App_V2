@@ -94,10 +94,11 @@ public class LeaveRequestService {
             endDate = (leaveRequest.getEnd_date() == null)? startDate.plusDays(0) : leaveRequest.getEnd_date();
         }
         
-        int duration = (int) ChronoUnit.DAYS.between(startDate, endDate) + 1;
-        System.out.println(duration);
+        int duration = leaveRequest.getDuration();
+        // int duration = calculateDurationExcludingWeekends(startDate, endDate);
+        // System.out.println(duration);
         leaveRequest.setEnd_date(endDate);
-        leaveRequest.setDuration(duration);
+        // leaveRequest.setDuration(duration);
 
         leaveRequest = leaveRequestRepository.save(leaveRequest);
 
@@ -109,6 +110,20 @@ public class LeaveRequestService {
 
         return leaveRequest;
     }
+
+    // private int calculateDurationExcludingWeekends(LocalDate startDate, LocalDate endDate) {
+    //     int duration = 0;
+    //     LocalDate currentDate = startDate;
+
+    //     while (!currentDate.isAfter(endDate)) {
+    //         if (currentDate.getDayOfWeek() != DayOfWeek.SATURDAY && currentDate.getDayOfWeek() != DayOfWeek.SUNDAY) {
+    //             duration++;
+    //         }
+    //         currentDate = currentDate.plusDays(1);
+    //     }
+
+    //     return duration;
+    // }
 
     public LeaveRequest approve(Long id, LeaveRequestApply leaveRequestApply) {
         LeaveRequest leaveRequest = modelMapper.map(leaveRequestApply, LeaveRequest.class);
