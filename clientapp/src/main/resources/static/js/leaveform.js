@@ -1,13 +1,14 @@
 $(document).ready(function () {
     $.ajax({
-        url: "/api/leavebalance/my?username=current",
+        url: "/api/leavebalance/my",
         type: "GET",
-        success: function(data) {
+        success: function (data) {
             // Mengisi nilai current_year dan last_year ke dalam input
 
             // Menghitung total balance
             let totalBalance = data.current_year + data.last_year;
             let leaveDrop = document.getElementById("apr-leave-type");
+            let leaveDur = document.getElementById("duration");
             let submitButton = $('button[type="submit"]');
             let myLeaveBalance = $('#myleavebalance');
 
@@ -15,7 +16,7 @@ $(document).ready(function () {
             updateButtonAndBalance();
 
             // Menambahkan event listener ketika nilai leaveDrop berubah
-            leaveDrop.addEventListener("change", function() {
+            leaveDrop.addEventListener("change", function () {
                 updateButtonAndBalance();
             });
 
@@ -30,6 +31,16 @@ $(document).ready(function () {
                     myLeaveBalance.prop('hidden', true);
                 }
             }
+
+            endDateInput.addEventListener('change', function () {
+                if (parseFloat(leaveDur.value) > totalBalance) {
+                    submitButton.prop('disabled', true);
+                    myLeaveBalance.prop('hidden', false);
+                } else {
+                    submitButton.prop('disabled', false);
+                    myLeaveBalance.prop('hidden', true);
+                }
+            });
         }
     });
 
@@ -63,8 +74,59 @@ $(document).ready(function () {
 
     // Event listener untuk memperbarui atribut min pada endDateInput
     startDateInput.addEventListener('change', function () {
+        var startDate = new Date(this.value); // Mendapatkan tanggal dari startDateInput
+        var daysToAdd = 4; // Jumlah maksimal hari yang dihitung (tidak termasuk Sabtu dan Minggu)
+
+        while (daysToAdd > 0) {
+            startDate.setDate(startDate.getDate() + 1); // Menambahkan 1 hari ke startDate
+            if (startDate.getDay() !== 0 && startDate.getDay() !== 6) { // Memeriksa apakah bukan Sabtu atau Minggu
+                daysToAdd--;
+            }
+        }
+
+        // Mengatur atribut min pada endDateInput
         endDateInput.setAttribute('min', this.value);
+
+        // Mengatur atribut max pada endDateInput dengan tanggal yang sudah dihitung
+        endDateInput.setAttribute('max', startDate.toISOString().split('T')[0]);
+
+        // Menghapus nilai yang tidak valid pada endDateInput jika nilai yang dipilih sebelum min atau setelah max
+        if (endDateInput.value < this.value || endDateInput.value > startDate.toISOString().split('T')[0]) {
+            endDateInput.value = '';
+        }
     });
+
+    function showWeekendAlert() {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Please choose a weekday to Request',
+            showConfirmButton: false,
+            timer: 1500
+        });
+    }
+
+    function isWeekend(date) {
+        const day = date.getDay(); // 0: Sunday, 1: Monday, ..., 6: Saturday
+        return day === 0 || day === 6;
+    }
+
+    // Function to disable weekend dates in the date picker
+    function disableWeekends() {
+        const selectStartDate = new Date(startDateInput.value);
+        const selectEndDate = new Date(endDateInput.value);
+        if (isWeekend(selectStartDate)) {
+            showWeekendAlert();
+            startDateInput.value = ''; // Reset the selected date if it's a weekend
+        }
+        if (isWeekend(selectEndDate)) {
+            showWeekendAlert();
+            endDateInput.value = ''; // Reset the selected date if it's a weekend
+        }
+    }
+
+    // Attach an event listener to the date picker input
+    startDateInput.addEventListener('change', disableWeekends);
+    endDateInput.addEventListener('change', disableWeekends);
 
     // Hitung durasi    
     startDateInput.addEventListener('change', hitungDurasi);
@@ -99,6 +161,7 @@ $(document).ready(function () {
         }
         return durasi;
     }
+    
 
 });
 
@@ -107,48 +170,48 @@ function create() {
     let start_date = $('#start-date').val()
     let end_date = $('#end-date').val()
     let notes = $('#crt-notes').val()
-    let durasiHari = parseInt(document.getElementById('duration').value);
+    let durasiHari = parseInt($('#duration').val());
     // console.log(durasiHari);
-    $('#leaveform').submit(function(e) {
+    $('#leaveform').submit(function (e) {
         e.preventDefault(); // Mencegah form melakukan submit biasa
-        
+
         // Melakukan permintaan Ajax
         $.ajax({
-          url: "/api/leaverequest",
-          method: "POST",
-          dataType: "JSON",
-          contentType: "application/json",
-          beforeSend: addCsrfToken(),
-          data: JSON.stringify({
-            leaveType: {
-                id: leave_type
+            url: "/api/leaverequest",
+            method: "POST",
+            dataType: "JSON",
+            contentType: "application/json",
+            beforeSend: addCsrfToken(),
+            data: JSON.stringify({
+                leaveType: {
+                    id: leave_type
+                },
+                start_date: start_date,
+                end_date: end_date,
+                duration: durasiHari,
+                notes: notes
+            }),
+            success: function () {
+                // Handle ketika submit berhasil
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Your leave has been saved',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                // Melakukan redirect ke halaman lain
+                setTimeout(function () {
+                    window.location.href = "leave/myrequest";
+                }, 1000);
             },
-            start_date: start_date,
-            end_date: end_date,
-            duration: durasiHari,
-            notes: notes
-          }),
-          success: function() {
-            // Handle ketika submit berhasil
-            Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Your leave has been saved',
-                showConfirmButton: false,
-                timer: 1500
-            });            
-            // Melakukan redirect ke halaman lain
-            setTimeout(function() {
-                window.location.href = "leave/myrequest";
-            }, 1000);
-          },
-          error: function(xhr, status, error) {
-            // Handle ketika terjadi error
-            console.log(error);
-          }
+            error: function (xhr, status, error) {
+                // Handle ketika terjadi error
+                console.log(error);
+            }
         });
     });
-} 
+}
 
 (function () {
     const leaveTypeSelect = document.getElementById('apr-leave-type');
