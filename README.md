@@ -1,12 +1,16 @@
 # Information for the Final Project Repository
 
-## **`Kelompok 01`**
+## **_`Judul: Leave Request Apps`_**
+
+### **`Kelompok 01`**
 
 - **Kevin Krisna Adji Pratama**
 - **Thoriq Afa Faisal Muhammad**
 - **Achmad Fachturrohman**
 
-## **`Documentation`**
+---
+
+### **`Design & Documentation`**
 - [BPMN](https://drive.google.com/file/d/1oJSDcv9h6t-Qvm9U1OK6CLruCewYmSAu/view?usp=sharing)
 - [Use Case](https://drive.google.com/file/d/13ncpCd2m-KqCeqOpfQ4dzMhGBlW8hbet/view?usp=sharing) 
 - [ERD](https://drive.google.com/file/d/1EhfinXKSOV_LqwsEaV-a1mKrGZyb1rsI/view?usp=sharing)
@@ -17,7 +21,9 @@
 - [PPT](https://docs.google.com/presentation/d/14ji7meDVxbDB6MKeuckqnpf1B1XadgjB/edit#slide=id.p1)
 - [User Manual](https://drive.google.com/file/d/1Mmn5h9_wk44qDZw19HH3ZYA8008rrVy6/view?usp=sharing)
 
-## **`Priority`**
+---
+
+### **`Priority`**
 - Set Dummy in DB
 - Fix DB Relation
 - Layouting
@@ -29,8 +35,10 @@
 - Email Notification
 - Modul Leave Balance Status
 
-## **`Project Task`**
-- **`Kevin Krisna Adji Pratama` :**
+---
+
+### **`Project Task`**
+1. **`Kevin Krisna Adji Pratama` :**
     - Layouting Modul Login Page (FE)
     - Layouting Modul Home Page (FE)
     - Layouting Modul Leave Page (FE)
@@ -54,7 +62,7 @@
     - Update and implement fixed footer (FE)
     - Implement scrollable functionality in data table (FE)
 
-- **`Thoriq Afa Faisal Muhammad` :**
+2. **`Thoriq Afa Faisal Muhammad` :**
     - Modul Employee (BE)
     - Modul Leave Type (BE)
     - Modul Department (BE)
@@ -84,7 +92,7 @@
     - Add day_num for duration in leave request (FE)
     - Fix Balance, Duration, Approval, Data Filter Employee by Manager (FE)
 
-- **`Achmad Fachturrohman` :**
+3. **`Achmad Fachturrohman` :**
     - Modul Login (BE) + Login Function (FE)
     - Modul User (BE)
     - Modul Leave Status (BE)
@@ -114,13 +122,17 @@
     - Update icon view history in my request (Leave) (FE)
     - Update department edit for dropdown option (FE)
 
-## **`Ketentuan Repository`**
+---
+
+### **`Ketentuan Repository`**
 
 - ❌ Dilarang mengakses atau menyalahgunakan repositori kelompok lain.
 - 💻 Fokus pada pengerjaan kelompok masing-masing.
 - 🤓 Untuk kelompok lain bisa sharing, melihat proses, serta memicu semangat untuk memberikan hasil yang terbaik pada projectnya masing-masing. 💪💪💪
 
-## **`Ketentuan Implementasi Repository`**
+---
+
+### **`Ketentuan Implementasi Repository`**
 
 - Silahkan clone repository yang sudah disediakan untuk setiap kelompoknya masing-masing.
 - Setalah clone, silahkan masukkan folder project `backend` & `frontend` yang nanti teman-teman buat.
